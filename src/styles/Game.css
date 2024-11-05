@@ -1,0 +1,18 @@
+.topPartInstructions{
+    background-color: var(--purple);
+    width: fit-content;
+    padding: 1rem;
+    color: var(--white);
+    border-radius: 0 0 12px 12px;
+}
+.topPartContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -2rem;
+
+}
+.topPartLogo{
+    height: 90px;
+}
+

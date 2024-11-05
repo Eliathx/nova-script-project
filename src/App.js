@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Game from './pages/Game';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <img className="bigLogo" src="/taseLogo.webp" alt="Logo" />
+     <div className='mainMenuContainer'>
+      <h1>Desafío Numérico</h1>
+      <hr></hr>
+      <p>Clasifica los números en las diferentes categorías</p>
+      <a href='/jugar'>Jugar</a>
+     </div>
     </div>
   );
 }
