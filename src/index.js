@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Game from './pages/Game';
+import Lista from './pages/Lista';
+import Resumen from './pages/Resumen';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login></Login>,
+  },
+  {
+    path: "/lista-pacientes",
+    element: <Lista></Lista>,
+  },
+  {
+    path: "/Resumen",
+    element: <Resumen></Resumen>,
   },
 ]);
 
