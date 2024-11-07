@@ -1,5 +1,5 @@
 import "../styles/GameBoard.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -29,7 +29,6 @@ const GameOption = ({ value, index, onDropOption }) => {
     );
 };
 
-
 const GameCategory = ({ title, category, onDropOption }) => {
     const [, drop] = useDrop({
         accept: ITEM_TYPE,
@@ -41,7 +40,7 @@ const GameCategory = ({ title, category, onDropOption }) => {
             <div className="gameCategoriesTitle">{title}</div>
             <div ref={drop} className="gameCategoriesChoices">
                 {category.map((item, index) => (
-                    <div className="gameOption"  key={index}>{item}</div>
+                    <div className="gameOption" key={index}>{item}</div>
                 ))}
             </div>
         </div>
@@ -59,6 +58,9 @@ const GameBoard = () => {
         Array.from({ length: 27 }, () => getRandomNumber())
     );
 
+    const [score, setScore] = useState(0); // Estado para el puntaje
+    const [isButtonActive, setIsButtonActive] = useState(false); // Estado para activar/desactivar el botón
+
     function getRandomNumber() {
         return Math.floor(Math.random() * 9000) + 1000;
     }
@@ -73,6 +75,32 @@ const GameBoard = () => {
             prevOptions.map((option, i) => (i === index ? null : option))
         );
     };
+
+    const handleFinish = () => {
+        let newScore = 0;
+
+        // Verificar los números de cada categoría
+        categories.menores2999.forEach((num) => {
+            if (num < 2999) newScore++;
+        });
+
+        categories.entre2999y5999.forEach((num) => {
+            if (num >= 2999 && num <= 5999) newScore++;
+        });
+
+        categories.mayores5999.forEach((num) => {
+            if (num > 5999) newScore++;
+        });
+
+        setScore(newScore); // Actualizar el puntaje
+        alert(`¡Juego finalizado! Tu puntaje es: ${newScore}`);
+    };
+
+    // Verificar si todos los números han sido arrastrados
+    useEffect(() => {
+        const allDragged = options.every((option) => option === null);
+        setIsButtonActive(allDragged);
+    }, [options]);
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -110,6 +138,13 @@ const GameBoard = () => {
                         }
                     />
                 </div>
+                <button
+                    className="finishButton"
+                    onClick={handleFinish}
+                    disabled={!isButtonActive} // Deshabilitar el botón si no está activo
+                >
+                    Finalizar
+                </button>
             </div>
         </DndProvider>
     );
