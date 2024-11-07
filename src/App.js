@@ -13,12 +13,13 @@ function App() {
       </div>
       <div className="headerContent">
         <img className="bigLogo" src="/taseLogo.webp" alt="Logo" />
-     <div className='mainMenuContainer'>
-      <h1>Desafío Numérico</h1>
-      <hr></hr>
-      <p>Clasifica los números en las diferentes categorías</p>
-      <a href='/formularioInformaciónUsuario'>Jugar</a>
-     </div>
+        <div className='mainMenuContainer'>
+          <h1>Desafío Numérico</h1>
+          <hr></hr>
+          <p>Clasifica los números en las diferentes categorías</p>
+          <a href='/formularioInformaciónUsuario'>Jugar</a>
+        </div>
+      </div>
     </div>
   );
 }
