@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import Game from './pages/Game';
 import UserInformationForm from './pages/UserInformationForm';
+import Lista from './pages/Lista';
+import Resumen from './pages/Resumen';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,18 @@ const router = createBrowserRouter([
   {
     path: "/formularioInformaciónUsuario",
     element: <UserInformationForm></UserInformationForm>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/lista-pacientes",
+    element: <Lista></Lista>,
+  },
+  {
+    path: "/Resumen",
+    element: <Resumen></Resumen>,
   },
 ]);
 
