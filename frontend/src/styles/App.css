@@ -16,9 +16,9 @@
 }
 
 .loginIcon img {
-    width: 20px; /* Tamaño más pequeño para el ícono */
+    width: 20px; 
     height: 20px;
-    filter: invert(1); /* Color blanco */
+    filter: invert(1);
 }
 
 .headerContent {
@@ -29,7 +29,7 @@
 }
 
 .bigLogo {
-    width: 25rem; /* Tamaño tase */
+    width: 25rem;
     height: auto;
 }
 
@@ -60,5 +60,5 @@ a {
 }
 
 a:hover {
-    background-color: #6a1b9a;
+    background-color: #9075a1;
 }

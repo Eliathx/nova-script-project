@@ -1,7 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import '../styles/App.css';
 import { Link } from 'react-router-dom';
-import Game from './pages/Game';
 
 function App() {
   return (
