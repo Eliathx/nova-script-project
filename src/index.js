@@ -16,11 +16,11 @@ import Login from './pages/Login';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: <App />,
   },
   {
     path: "/jugar",
-    element: <Game></Game>,
+    element: <Game />,
   },
   {
     path: "/formularioInformaciónUsuario",
@@ -28,15 +28,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login></Login>,
+    element: <Login />,
   },
   {
     path: "/lista-pacientes",
-    element: <Lista></Lista>,
+    element: <Lista />,
   },
   {
-    path: "/Resumen",
-    element: <Resumen></Resumen>,
+    path: "/resumen/:pacienteId", // Ruta dinámica para paciente
+    element: <Resumen />, // El componente Resumen recibirá el pacienteId
   },
 ]);
 
@@ -47,7 +47,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

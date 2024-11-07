@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/Login.css";;
+import axios from 'axios'; // Asegúrate de que axios esté importado
+import "../styles/Login.css";
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -8,13 +9,22 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Verifica que el usuario y la contraseña sean "admin"
-    if (username === 'admin' && password === 'admin') {
-      navigate('/lista-pacientes'); // Redirige a la página de lista de pacientes
-    } else {
-      setError('Usuario o contraseña incorrectos');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+
+      if (response.data && response.data.terapeutaId) {
+        console.log(response.data.terapeutaId)
+        localStorage.setItem('terapeutaId', response.data.terapeutaId);
+        navigate('/lista-pacientes');
+      } else {
+        setError('Usuario o contraseña incorrectos');
+      }
+    } catch (err) {
+      setError('Error al iniciar sesión');
+      console.error(err);
     }
   };
 

@@ -1,18 +1,38 @@
-import React from 'react';
-import '../styles/Lista.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 
 const Lista = () => {
-  const pacientes = [
-    { cedula: '1234567890', nombre: 'Juan Pérez', edad: 25 },
-    { cedula: '0987654321', nombre: 'María García', edad: 32 },
-    { cedula: '1122334455', nombre: 'Carlos Ruiz', edad: 40 },
-    { cedula: '6677889900', nombre: 'Ana Torres', edad: 28 },
-    { cedula: '4455667788', nombre: 'Luis Martínez', edad: 35 },
-  ];
+  const [pacientes, setPacientes] = useState([]);
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); 
+
+  const terapeutaId = localStorage.getItem('terapeutaId');
+
+  useEffect(() => {
+    if (terapeutaId) {
+      axios
+        .get(`http://localhost:5000/api/pacientes/${terapeutaId}`)
+        .then((response) => {
+          setPacientes(response.data);
+        })
+        .catch((err) => {
+          setError('Error al cargar los pacientes');
+          console.error(err);
+        });
+    } else {
+      setError('No se encontró el terapeuta autenticado');
+    }
+  }, [terapeutaId]);
+
+  const handleVerPartidas = (pacienteId) => {
+    navigate(`/resumen/${pacienteId}`);
+  };
 
   return (
-    <div className="table-container">
-      <h2>Lista de Pacientes</h2>
+    <div>
+      <h2 style={{ color: "var(--white)" }}>Lista de Pacientes</h2>
+      {error && <p className="error-message">{error}</p>}
       <table>
         <thead>
           <tr>
@@ -25,13 +45,13 @@ const Lista = () => {
         <tbody>
           {pacientes.map((paciente, index) => (
             <tr key={index}>
-              <td>{paciente.cedula}</td>
+              <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
               <td>{paciente.edad}</td>
               <td>
-                <a href="/resumen" className="ver-partidas-btn">
+                <button onClick={() => handleVerPartidas(paciente.id)}>
                   Ver partidas
-                </a>
+                </button>
               </td>
             </tr>
           ))}
