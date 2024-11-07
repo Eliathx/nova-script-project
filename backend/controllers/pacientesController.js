@@ -1,4 +1,5 @@
-const pool = require('../db'); 
+const pool = require('../database/db');
+
 
 exports.getPacientesPorTerapeuta = async (req, res) => {
   const { terapeutaId } = req.params; 

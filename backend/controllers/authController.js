@@ -1,4 +1,4 @@
-const pool = require('../db');
+const pool = require('../database/db');
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;

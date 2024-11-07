@@ -1,4 +1,4 @@
-const pool = require('../db');
+const pool = require('../database/db');
 
 exports.getPartidasPorPaciente = async (req, res) => {
   const { pacienteId } = req.params;  

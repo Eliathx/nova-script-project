@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import "./styles/index.css"
+import App from './pages/App';
 import Game from './pages/Game';
 import UserInformationForm from './pages/UserInformationForm';
 import Lista from './pages/Lista';
 import Resumen from './pages/Resumen';
-import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -47,4 +46,3 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
