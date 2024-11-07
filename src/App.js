@@ -10,7 +10,7 @@ function App() {
       <h1>Desafío Numérico</h1>
       <hr></hr>
       <p>Clasifica los números en las diferentes categorías</p>
-      <a href='/jugar'>Jugar</a>
+      <a href='/formularioInformaciónUsuario'>Jugar</a>
      </div>
     </div>
   );

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Game from './pages/Game';
+import UserInformationForm from './pages/UserInformationForm';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/jugar",
     element: <Game></Game>,
+  },
+  {
+    path: "/formularioInformaciónUsuario",
+    element: <UserInformationForm></UserInformationForm>,
   },
 ]);
 
