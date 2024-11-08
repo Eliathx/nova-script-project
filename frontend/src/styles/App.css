@@ -52,15 +52,3 @@
     font-size: 1rem;
     margin-top: 0.5rem;
 }
-
-a {
-    font-size: 1rem;
-    padding: 0.5rem 1.5rem;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-a:hover {
-    background-color: #9075a1;
-}

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "../styles/GameBoard.css";
@@ -48,6 +49,14 @@ const GameCategory = ({ title, category, onDropOption }) => {
 };
 
 const GameBoard = () => {
+    const dialogRef = useRef(null);
+
+    const openDialog = () => {
+        if (dialogRef.current) {
+            dialogRef.current.showModal();
+        }
+    };
+
     const [categories, setCategories] = useState({
         menores2999: [],
         entre2999y5999: [],
@@ -116,7 +125,7 @@ const GameBoard = () => {
                 });
 
                 if (response.ok) {
-                    alert(`¡Juego finalizado! Tu puntaje es: ${newScore}`);
+                    openDialog();
                     setGameFinished(true);
                 } else {
                     alert("Error al guardar los datos de la partida");
@@ -193,6 +202,37 @@ const GameBoard = () => {
                 >
                     Finalizar
                 </button>
+                
+                {(score === 27) ? <dialog ref={dialogRef}>
+                    <div className="imageContainer">
+                        <img className="imageCarita" src="/caritafeli.webp" />
+                    </div>
+                    <div className="dialogTitle">
+                        <p>¡Lo Lograste!</p>
+                    </div>
+                    <div className="scoreTitle">
+                        <p>Aciertos: {score}</p>
+                    </div>
+                    <div className="buttonContainer">
+                        <a href="/jugar">Volver a jugar</a>
+                        <button onClick={() => dialogRef.current.close()}>Cerrar</button>
+                    </div>
+                </dialog> : <dialog ref={dialogRef}>
+                    <div className="imageContainer">
+                        <img className="imageCarita" src="/caritamolesta.webp" />
+                    </div>
+                    <div className="dialogTitle">
+                        <p>¡Sigue Practicando!</p>
+                    </div>
+                    <div className="scoreTitle">
+                        <p>Aciertos: {score}</p>
+                    </div>
+                    <div className="buttonContainer">
+                        <a href="/jugar">Volver a jugar</a>
+                        <button onClick={() => dialogRef.current.close()}>Cerrar</button>
+                    </div>
+                </dialog>}
+
             </div>
         </DndProvider>
     );

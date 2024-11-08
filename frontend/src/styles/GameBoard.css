@@ -38,8 +38,6 @@
     border-radius: 6px 6px 0 0;
 }
 
-
-
 .gameCategoriesChoices{
     justify-content: center;
     display: flex;
@@ -70,4 +68,41 @@
 .finishButton:disabled {
     background-color: var(--gray);
     cursor: not-allowed;
+}
+
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scoreTitle{
+    font-size: 1.65rem;
+    text-align: center;
+    background-color: var(--gray);
+    color: var(--black);
+    padding: 0.1rem 0.1rem;
+    border-radius: 12px;
+}
+
+.dialogTitle{
+    font-size: 2rem;
+    text-align: center;
+    /* background-color: var(--gray); */
+    color: var(--black);
+    padding: 0.1rem 0.1rem;
+    border-radius: 12px;
+}
+
+.imageContainer{
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+    margin: -4rem auto;
+    position: relative;
+    top: -2.25rem;
+    /* z-index: 10; */
 }

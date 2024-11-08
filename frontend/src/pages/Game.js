@@ -6,8 +6,8 @@ const Game = () => {
        <div className="topPartContainer">
         <img className="topPartLogo" src="/taseLogo.webp"></img>
         <div className="topPartInstructions">
-                <b>Área de trabajo:  razonamiento y memoria de trabajo</b>
-                <div>Instrucción: clasifica los siguientes números</div>
+                <i><strong>Área de trabajo:</strong> Razonamiento y memoria de trabajo</i>
+                <div><strong>Instrucción: </strong> Arrastra cada rectángulo con un número dentro de las casillas que corresponda. ¡Diviérte!</div>
         </div>
         
        </div>
