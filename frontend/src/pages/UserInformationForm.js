@@ -1,55 +1,53 @@
-import "../styles/UserInformationForm.css"
+import "../styles/UserInformationForm.css";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserInformationForm = () => {
-    const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [age, setAge] = useState('');
+    const [cedula, setCedula] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate(); 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // alert(`Mi nombre es ${name} y mi edad es ${age}`);
+        
+        try {
+            const response = await fetch(`http://localhost:5000/api/pacientes/cedula/${cedula}`);
+            
+            if (response.ok) {
+                const data = await response.json();
+                const jwt = data.id; 
+                console.log(jwt)
+                localStorage.setItem('pacienteId', jwt);
+                navigate('/jugar');
+            } else {
+                setErrorMessage("Esta cédula no está registrada. Intente de nuevo o solicite al terapeuta que lo registre.");
+            }
+        } catch (error) {
+            console.error("Error al verificar la cédula:", error);
+            setErrorMessage("Hubo un error al conectarse con el servidor. Inténtalo nuevamente.");
+        }
     };
 
-    return ( 
-        <div className='mainContainer'>
-            
-            <div className='informationPart'> 
-                <div className='titleContainer'>
-                    <h1>Información del Usuario</h1>
-                </div>
+    return (
+        <div className="informationContainer">
+            <h1>¡Bienvenido de vuelta!</h1>
+            <p>Por favor, ingresa tu cédula antes de iniciar el juego.</p>
 
-                <h2>Por favor, ingresa la siguiente información:</h2>
-
-                <p>Mi Apellido es: </p>
-
+            <form style={{display:"flex", gap: "1rem", justifyContent: "center"}} onSubmit={handleSubmit}>
                 <input
-                    type="text" 
-                    id="lastname" 
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                /> 
-
-                <p>Mi Nombre es: </p>
-
-                <input
-                    type="text" 
-                    id="name" 
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                /> 
-
-                <p>Mi Edad es: </p>
-
-                <input
-                    type="number"
-                    id="age"
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
+                    type="text"
+                    id="cedula"
+                    value={cedula}
+                    onChange={(e) => setCedula(e.target.value)}
+                    placeholder="Número de cédula"
+                    required
                 />
+                <button className="verificarCedulaButton" type="submit">Verificar</button>
+            </form>
 
-            </div>
-            <a href='/jugar'>Empezar Juego</a>
+            {errorMessage && (
+                <p className="errorMessage">{errorMessage}</p>
+            )}
         </div>
     );
 };

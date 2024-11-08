@@ -1,7 +1,7 @@
-import "../styles/GameBoard.css";
 import { useState, useEffect } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import "../styles/GameBoard.css";
 
 const ITEM_TYPE = "OPTION";
 
@@ -58,14 +58,19 @@ const GameBoard = () => {
         Array.from({ length: 27 }, () => getRandomNumber())
     );
 
-    const [score, setScore] = useState(0); // Estado para el puntaje
-    const [isButtonActive, setIsButtonActive] = useState(false); // Estado para activar/desactivar el botón
+    const [score, setScore] = useState(0);
+    const [isButtonActive, setIsButtonActive] = useState(false);
+    const [timeElapsed, setTimeElapsed] = useState(0); 
+    const [timerInterval, setTimerInterval] = useState(null);
+    const [gameFinished, setGameFinished] = useState(false);
 
     function getRandomNumber() {
         return Math.floor(Math.random() * 9000) + 1000;
     }
 
     const handleDropOption = (value, index, categoryKey) => {
+        if (gameFinished) return;
+
         setCategories((prevCategories) => ({
             ...prevCategories,
             [categoryKey]: [...prevCategories[categoryKey], value],
@@ -76,10 +81,10 @@ const GameBoard = () => {
         );
     };
 
-    const handleFinish = () => {
+    const handleFinish = async () => {
+        if (gameFinished) return; 
         let newScore = 0;
 
-        // Verificar los números de cada categoría
         categories.menores2999.forEach((num) => {
             if (num < 2999) newScore++;
         });
@@ -92,15 +97,58 @@ const GameBoard = () => {
             if (num > 5999) newScore++;
         });
 
-        setScore(newScore); // Actualizar el puntaje
-        alert(`¡Juego finalizado! Tu puntaje es: ${newScore}`);
+        setScore(newScore);
+
+        const pacienteId = localStorage.getItem("pacienteId");
+
+        if (pacienteId) {
+            try {
+                const response = await fetch("http://localhost:5000/api/partidas", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        pacienteId: pacienteId,
+                        aciertos: newScore,
+                        tiempoEnSegundos: timeElapsed, 
+                    }),
+                });
+
+                if (response.ok) {
+                    alert(`¡Juego finalizado! Tu puntaje es: ${newScore}`);
+                    setGameFinished(true);
+                } else {
+                    alert("Error al guardar los datos de la partida");
+                }
+            } catch (error) {
+                console.error("Error al conectar con el servidor:", error);
+                alert("Error al guardar los datos de la partida");
+            }
+        } else {
+            alert("No se encontró el pacienteId.");
+        }
+
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            setTimerInterval(null);
+        }
     };
 
-    // Verificar si todos los números han sido arrastrados
     useEffect(() => {
         const allDragged = options.every((option) => option === null);
         setIsButtonActive(allDragged);
     }, [options]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTimeElapsed((prevTime) => prevTime + 1); 
+        }, 1000);
+        setTimerInterval(interval); 
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -141,7 +189,7 @@ const GameBoard = () => {
                 <button
                     className="finishButton"
                     onClick={handleFinish}
-                    disabled={!isButtonActive} // Deshabilitar el botón si no está activo
+                    disabled={!isButtonActive || gameFinished} 
                 >
                     Finalizar
                 </button>

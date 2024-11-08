@@ -19,3 +19,23 @@ exports.getPartidasPorPaciente = async (req, res) => {
     res.status(500).json({ message: 'Error en el servidor', error: error.message });
   }
 };
+exports.insertarPartida = async (req, res) => {
+  const { pacienteId, aciertos, tiempoEnSegundos } = req.body;  
+
+  if (!pacienteId || aciertos === undefined || tiempoEnSegundos === undefined) {
+    return res.status(400).json({ message: 'Faltan datos para insertar la partida' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO Partidas (pacienteId, aciertos, tiempoEnSegundos)
+       VALUES ($1, $2, $3) RETURNING id`, 
+      [pacienteId, aciertos, tiempoEnSegundos]
+    );
+
+    res.status(201).json({ message: 'Partida insertada correctamente', id: result.rows[0].id });
+  } catch (error) {
+    console.error('Error al insertar la partida:', error);
+    res.status(500).json({ message: 'Error en el servidor', error: error.message });
+  }
+};

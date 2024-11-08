@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
+      <div className='wrapper'>
       <div className="header">
         <Link to="/login" className="loginIcon">
           <img src="/login.svg" alt="Login Icon" />
@@ -17,6 +18,7 @@ function App() {
           <p>Clasifica los números en las diferentes categorías</p>
           <a href='/formularioInformaciónUsuario'>Jugar</a>
         </div>
+      </div>
       </div>
     </div>
   );

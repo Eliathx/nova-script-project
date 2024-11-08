@@ -26,7 +26,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.verificarCedulaButton{
+  all: unset;
+  cursor: pointer;
+  padding: 0.75rem 3.5rem;
+  border-radius: 6px;
+  color: var(--white);
+  background-color: var(--purple);
+  display: block;
+  width: fit-content;
+}
 a{
   all: unset;
   cursor: pointer;

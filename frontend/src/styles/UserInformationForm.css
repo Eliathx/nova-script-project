@@ -1,55 +1,16 @@
-.mainContainer {
-    /* background-color: var(--purple); */
-    /* display: flex; */
-    /* align-items: center;
-    justify-content: space-between; */
-    /* Centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 0 6rem;
-    margin-top: -2rem;
-    margin-top: -2rem;
-    border-radius: 12px 12px 12px 12px;
-    /* border: 1px solid var(--black); */
-}
-
-.titleContainer {
-    font-size: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: var(--orange);
-    color: var(--white);
-    border-radius: 12px 12px 12px 12px;
-}
-
-.informationPart{
+.informationContainer{
+    text-align: center;
+    margin: auto;
     background-color: var(--white);
     width: fit-content;
-    padding: 1rem;
+    padding: 1.5rem;
     color: var(--white);
-    border-radius: 12px 12px 12px 12px;
-    /* letra negra */
+    border-radius: 12px;
     color: var(--black);
 }
 
-/* letra h2 pequeña */
-h2 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-
-/* caja de texto grande y con bordes suavizados y letra grande */
 input {
-    /* width: 100%; */
-    padding: 0.35rem;
-    font-size: 1.5rem;
-    border-radius: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
     border: 1px solid var(--black);
-    margin-bottom: 1rem;
 }

@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
     gap: 2rem;
 }
 
@@ -14,7 +14,9 @@
     justify-content: flex-end; 
     position: relative;
 }
-
+.header a{
+    margin-right: 1rem;
+}
 .loginIcon img {
     width: 20px; 
     height: 20px;
