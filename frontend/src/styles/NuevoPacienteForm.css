@@ -1,0 +1,24 @@
+.nuevoPacienteForm{
+    background-color: var(--white);
+    width: fit-content;
+    padding: 1.5rem;
+    margin: auto;
+    border-radius: 12px;
+}
+.formGroup{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    margin: 0.75rem 0;
+}
+.nuevoPacienteForm button{
+    all: unset;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    color: var(--white);
+    background-color: var(--purple);
+    display: block;
+    width: fit-content;
+    margin: 1.5rem auto 0;
+}

@@ -48,3 +48,9 @@ a{
   margin: 0 auto;
   
 }
+td, th, tr {
+  text-align: center !important;
+}
+td > * {
+  margin: auto !important;
+}

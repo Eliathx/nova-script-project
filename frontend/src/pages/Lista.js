@@ -31,13 +31,17 @@ const Lista = () => {
 
   return (
     <div>
-      <h2 style={{ color: "var(--white)" }}>Lista de Pacientes</h2>
+      <div style={{display:"flex", width:"100%", justifyContent: 'space-between', alignItems:"center"}}>
+        <h2 style={{ color: "var(--white)" }}>Lista de Pacientes</h2>
+        <a style={{ margin: "0" }} href='registrarPaciente'>Registrar nuevo paciente</a>
+      </div>
       {error && <p className="error-message">{error}</p>}
       <table>
         <thead>
           <tr>
             <th>Cédula</th>
-            <th>Nombre</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
             <th>Edad</th>
             <th>Acciones</th>
           </tr>
@@ -47,9 +51,10 @@ const Lista = () => {
             <tr key={index}>
               <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
+              <td>{paciente.apellido}</td>
               <td>{paciente.edad}</td>
               <td>
-                <button onClick={() => handleVerPartidas(paciente.id)}>
+                <button className='verificarCedulaButton' onClick={() => handleVerPartidas(paciente.id)}>
                   Ver partidas
                 </button>
               </td>

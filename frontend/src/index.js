@@ -11,6 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Login from './pages/Login';
+import NuevoPacienteForm from './pages/NuevoPacienteForm';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/jugar",
     element: <Game />,
+  },
+  {
+    path: "/registrarPaciente",
+    element: <NuevoPacienteForm />,
   },
   {
     path: "/formularioInformaciónUsuario",
