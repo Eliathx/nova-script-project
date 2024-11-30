@@ -25,11 +25,12 @@
 .gameCategories{
     border-radius: 8px;
     display: grid;
-    gap: 0.5rem;
+    gap: 3rem;
     border-radius: 8px;
     grid-template-columns: repeat(3, 1fr);
     margin-top: 1rem;
 }
+
 .gameCategoriesTitle {
     background-color: var(--purple);
     text-align: center;

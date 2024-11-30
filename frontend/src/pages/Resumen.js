@@ -49,7 +49,7 @@ const Resumen = ({ user }) => {
                 <td>{partida.id}</td>
                 <td>{formatDate(partida.fecha)}</td>
                 <td>{formatTime(partida.fecha)}</td>
-                <td>{partida.aciertos}/27</td>
+                <td>{partida.aciertos}/quantity</td>
                 <td>{formatTimeFromSeconds(partida.tiempoensegundos)}</td>
               </tr>
             ))

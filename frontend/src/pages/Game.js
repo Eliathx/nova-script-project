@@ -1,7 +1,11 @@
+import { useState, useEffect, useRef } from "react";
+import { useLocation  } from 'react-router-dom';
 import "../styles/Game.css"
 import GameBoard from "../components/GameBoard";
 
 const Game = () => {
+    const location = useLocation();
+    const quantity = location.state?.quantity;
     return <div>
        <div className="topPartContainer">
         <img className="topPartLogo" src="/taseLogo.webp"></img>
@@ -11,7 +15,11 @@ const Game = () => {
         </div>
         
        </div>
-       <GameBoard></GameBoard>
+       {quantity !== undefined ? (
+                <GameBoard quantity={quantity} />
+            ) : (
+                <p>Por favor, seleccione un número.</p>
+            )}
     </div>
 }
 

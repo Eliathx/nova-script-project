@@ -18,7 +18,7 @@ const UserInformationForm = () => {
                 const jwt = data.id; 
                 console.log(jwt)
                 localStorage.setItem('pacienteId', jwt);
-                navigate('/jugar');
+                navigate('/cantidadNumber');
             } else {
                 setErrorMessage("Esta cédula no está registrada. Intente de nuevo o solicite al terapeuta que lo registre.");
             }

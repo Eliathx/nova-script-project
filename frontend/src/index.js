@@ -6,6 +6,7 @@ import Game from './pages/Game';
 import UserInformationForm from './pages/UserInformationForm';
 import Lista from './pages/Lista';
 import Resumen from './pages/Resumen';
+import CantidadNumeroJuego from './pages/CantidadNumerosJuego';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/lista-pacientes",
     element: <Lista />,
+  },
+  {
+    path: "/cantidadNumber",
+    element: <CantidadNumeroJuego />,
   },
   {
     path: "/resumen/:pacienteId", // Ruta dinámica para paciente
