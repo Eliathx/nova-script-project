@@ -60,6 +60,7 @@ const Resumen = ({ user }) => {
           )}
         </tbody>
       </table>
+      <a class="buttonSalir" href="/lista-pacientes">Volver</a>
     </div>
   );
 };

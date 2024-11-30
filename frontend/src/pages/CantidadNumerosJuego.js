@@ -33,7 +33,9 @@ const CantidadNumerosJuego = () => {
                 />
                 <button type="submit">Comenzar</button>
             </form>
+            <a href="/formularioInformaciónUsuario">Regresar</a>
         </div>
+        
     );
 };
 

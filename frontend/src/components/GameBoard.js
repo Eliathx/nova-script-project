@@ -279,18 +279,23 @@ const GameBoard = ({ quantity }) => {
                         incorrectOptions={incorrectOptions}
                     />
                 </div>
-                <button 
-                className="finishButton"
-                onClick={togglePause}
-                disabled={gameFinished} 
-                 >Pausar Juego</button>
-                <button
+                <div class="containerButton">
+                    <button 
                     className="finishButton"
-                    onClick={handleFinish}
-                    disabled={!isButtonActive || gameFinished} 
-                >
-                    Finalizar
-                </button>
+                    onClick={togglePause}
+                    disabled={gameFinished} 
+                    >Pausar Juego</button>
+                    <button
+                        className="finishButton"
+                        onClick={handleFinish}
+                        disabled={!isButtonActive || gameFinished} 
+                    >
+                        Finalizar
+                    </button>
+
+                    <a class="buttonSalir" href="/">Salir</a>
+                </div>
+                
                 
                 {/* Modal for pause */}
                 <dialog ref={pauseDialogRef}>

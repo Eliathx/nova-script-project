@@ -62,6 +62,7 @@ const Lista = () => {
           ))}
         </tbody>
       </table>
+      <a href="/login">Cerrar Sesión</a>
     </div>
   );
 };

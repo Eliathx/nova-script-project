@@ -100,6 +100,7 @@ const NuevoPacienteForm = () => {
                 {success && <div className="success">Paciente registrado correctamente.</div>}
                 <button type="submit">Registrar Paciente</button>
             </form>
+            <a href="/lista-pacientes">Regresar</a>
         </div>
     );
 };

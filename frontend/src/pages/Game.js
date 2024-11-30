@@ -15,11 +15,7 @@ const Game = () => {
         </div>
         
        </div>
-       {quantity !== undefined ? (
-                <GameBoard quantity={quantity} />
-            ) : (
-                <p>Por favor, seleccione un número.</p>
-            )}
+       {<GameBoard quantity={quantity} />}
     </div>
 }
 

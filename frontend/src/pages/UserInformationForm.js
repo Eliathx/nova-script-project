@@ -48,7 +48,9 @@ const UserInformationForm = () => {
             {errorMessage && (
                 <p className="errorMessage">{errorMessage}</p>
             )}
+            <a href="/">Regresar</a>
         </div>
+        
     );
 };
 

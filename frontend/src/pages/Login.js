@@ -52,8 +52,10 @@ function Login() {
         </div>
         {error && <p className="error-message">{error}</p>}
         <button type="submit" className="login-button">Ingresar</button>
+        <a  className="login-button" href="/">Regresar</a>
       </form>
     </div>
+    
   );
 }
 
