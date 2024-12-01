@@ -52,7 +52,7 @@
 }
 
 .gameOption.empty {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .finishButton {

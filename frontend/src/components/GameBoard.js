@@ -6,7 +6,7 @@ import "../styles/GameBoard.css";
 
 const ITEM_TYPE = "OPTION";
 
-const GameOption = ({ value, index, onDropOption }) => {
+const GameOption = ({ value, index, category, onDropOption, incorrectOptions = [] }) => {
     const [{ isDragging }, drag] = useDrag({
         type: ITEM_TYPE,
         item: { index, value },
@@ -16,13 +16,18 @@ const GameOption = ({ value, index, onDropOption }) => {
         }),
     });
 
+    // Verificamos si incorrectOptions es un arreglo y si la opción está en incorrectOptions
+    const isIncorrect = Array.isArray(incorrectOptions) && incorrectOptions.includes(value);
+
     return (
         <div
             ref={drag}
-            className={`gameOption ${value === null ? "empty" : ""}`}
+            className={`gameOption ${value === null ? "empty" : ""} ${isIncorrect ? "incorrect" : ""}`}
             style={{
                 opacity: isDragging ? 0.5 : 1,
                 cursor: value !== null ? "move" : "default",
+                backgroundColor: isIncorrect ? "var(--lightRed)" : "white", // Fondo rojo para opciones incorrectas
+                color: isIncorrect ? "var(--white)" : "inherit", // Texto blanco para las opciones incorrectas
             }}
         >
             {value !== null ? value : ""}
@@ -30,7 +35,11 @@ const GameOption = ({ value, index, onDropOption }) => {
     );
 };
 
+
+
 const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
+
+    
     const [, drop] = useDrop({
         accept: ITEM_TYPE,
         drop: (item) => onDropOption(item.value, item.index, category),
@@ -40,18 +49,17 @@ const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
         <div className="gameCategory">
             <div className="gameCategoriesTitle">{title}</div>
             <div ref={drop} className="gameCategoriesChoices">
-                {category.map((item, index) => (
-                    <div
-                        className={`gameOption ${incorrectOptions.includes(item) ? "incorrect" : ""}`}
+            {category.map((item, index) => (
+                    <GameOption
                         key={index}
-                        style={{
-                            backgroundColor: incorrectOptions.includes(item) ? "var(--lightRed)" : "white",
-                            color: incorrectOptions.includes(item) ? "var(--white)" : "inherit",
-                        }}
-                    >
-                        {item}
-                    </div>
+                        value={item}
+                        index={index}
+                        category={category}
+                        onDropOption={onDropOption}
+                        incorrectOptions={incorrectOptions}
+                    />
                 ))}
+                
             </div>
         </div>
     );
@@ -99,19 +107,39 @@ const GameBoard = ({ quantity }) => {
     function getRandomNumber() {
         return Math.floor(Math.random() * 9000) + 1000;
     }
+   
+
 
     const handleDropOption = (value, index, categoryKey) => {
         if (gameFinished) return;
+    
+       
+        setCategories((prevCategories) => {
+            const updatedCategories = { ...prevCategories };
+    
 
-        setCategories((prevCategories) => ({
-            ...prevCategories,
-            [categoryKey]: [...prevCategories[categoryKey], value],
-        }));
-
-        setOptions((prevOptions) =>
-            prevOptions.map((option, i) => (i === index ? null : option))
-        );
+            Object.keys(updatedCategories).forEach((key) => {
+                updatedCategories[key] = updatedCategories[key].filter(item => item !== value);
+            });
+    
+            updatedCategories[categoryKey] = [...updatedCategories[categoryKey], value];
+    
+            return updatedCategories;
+        });
+    
+        
+        setOptions((prevOptions) => {
+            return prevOptions.map((option) => {
+                if (option === value) {
+                    return null; 
+                }
+                return option; 
+            });
+        });
     };
+    
+    
+    
 
     const handleFinish = async () => {
         if (gameFinished) return; 
