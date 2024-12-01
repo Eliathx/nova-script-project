@@ -29,6 +29,25 @@ const Lista = () => {
     navigate(`/resumen/${pacienteId}`);
   };
 
+  const handleEliminarPaciente = (pacienteId) => {
+    // Confirm deletion
+    const confirmar = window.confirm('¿Está seguro de que desea eliminar este paciente?');
+    
+    if (confirmar) {
+      axios
+        .delete(`http://localhost:5000/api/pacientes/${pacienteId}`)
+        .then(() => {
+          // Reload patients list after deletion
+          window.location.reload();
+          alert('Paciente eliminado exitosamente');
+        })
+        .catch((err) => {
+          console.error('Error al eliminar paciente:', err);
+          alert('Error al eliminar el paciente');
+        });
+    }
+  };
+  
   return (
     <div>
       <div style={{display:"flex", width:"100%", justifyContent: 'space-between', alignItems:"center"}}>
@@ -56,6 +75,9 @@ const Lista = () => {
               <td>
                 <button className='verificarCedulaButton' onClick={() => handleVerPartidas(paciente.id)}>
                   Ver partidas
+                </button>
+                <button className='eliminarPacienteButton' onClick={() => handleEliminarPaciente(paciente.id)}>
+                  Eliminar
                 </button>
               </td>
             </tr>

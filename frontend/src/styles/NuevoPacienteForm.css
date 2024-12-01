@@ -11,6 +11,28 @@
     justify-content: space-between;
     margin: 0.75rem 0;
 }
+
+.input-paciente {
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--black);
+}
+#nombre {
+    width: 10rem;
+}
+
+#apellido {
+    width: 10rem;
+}
+
+#edad {
+    width: 3rem;
+}
+
+#cedula {
+    width: 7rem;
+}
+
 .nuevoPacienteForm button{
     all: unset;
     cursor: pointer;

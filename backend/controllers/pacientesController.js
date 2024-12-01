@@ -66,43 +66,18 @@ exports.insertarPaciente = async (req, res) => {
   }
 };
 
-// Editar paciente
-exports.editarPaciente = async (req, res) => {
-  const { pacienteId } = req.params;
-  const { nombre, apellido, edad, terapeutaId } = req.body;
 
-  try {
-    const result = await pool.query(
-      'UPDATE Pacientes SET nombre = $1, apellido = $2, edad = $3, terapeutaId = $4 WHERE id = $5 RETURNING *',
-      [nombre, apellido, edad, terapeutaId, pacienteId]
-    );
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'No se encontró el paciente para actualizar.' });
-    }
-
-    res.status(200).json({
-      message: 'Paciente actualizado exitosamente',
-      paciente: result.rows[0]
-    });
-  } catch (error) {
-    console.error('Error al actualizar el paciente:', error);
-    res.status(500).json({ message: 'Error en el servidor', error: error.message });
-  }
-};
-
-// Eliminar paciente
 exports.eliminarPaciente = async (req, res) => {
   const { pacienteId } = req.params;
 
   try {
     const result = await pool.query(
-      'DELETE FROM Pacientes WHERE id = $1 RETURNING *',
+      'DELETE FROM Pacientes WHERE id = $1::VARCHAR RETURNING *;',
       [pacienteId]
     );
 
     if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'No se encontró el paciente para eliminar.' });
+      return res.status(404).json({ message: 'Paciente no encontrado' });
     }
 
     res.status(200).json({

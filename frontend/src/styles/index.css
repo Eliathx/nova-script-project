@@ -41,6 +41,7 @@ a, button{
   display: block;
   width: fit-content;
   margin: 0 auto;
+  margin-block-start: 1rem;
 }
 
 td, th, tr {

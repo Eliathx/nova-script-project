@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/NuevoPacienteForm.css"
+import "../styles/NuevoPacienteForm.css";
 
 const NuevoPacienteForm = () => {
     const [nombre, setNombre] = useState("");
@@ -12,23 +12,24 @@ const NuevoPacienteForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!nombre || !apellido || !edad || !pacienteId) {
-            setError("Por favor, complete todos los campos.");
+        if (!/^\d{10}$/.test(pacienteId)) {
+            setError("La cédula debe ser un número de 10 dígitos.");
             return;
         }
+
         const terapeutaId = localStorage.getItem("terapeutaId");
 
         if (!terapeutaId) {
             setError("No se ha encontrado el ID del terapeuta.");
             return;
         }
+
         const nuevoPaciente = {
             nombre,
             apellido,
             edad: parseInt(edad, 10),
             pacienteId,
             terapeutaId
-            
         };
 
         try {
@@ -62,7 +63,7 @@ const NuevoPacienteForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="formGroup">
                     <label>Nombres:</label>
-                    <input
+                    <input className="input-paciente" id="nombre"
                         type="text"
                         value={nombre}
                         onChange={(e) => setNombre(e.target.value)}
@@ -71,7 +72,7 @@ const NuevoPacienteForm = () => {
                 </div>
                 <div className="formGroup">
                     <label>Apellidos:</label>
-                    <input
+                    <input className="input-paciente" id="apellido"
                         type="text"
                         value={apellido}
                         onChange={(e) => setApellido(e.target.value)}
@@ -80,7 +81,7 @@ const NuevoPacienteForm = () => {
                 </div>
                 <div className="formGroup">
                     <label>Edad:</label>
-                    <input
+                    <input className="input-paciente" id="edad"
                         type="number"
                         value={edad}
                         onChange={(e) => setEdad(e.target.value)}
@@ -89,7 +90,7 @@ const NuevoPacienteForm = () => {
                 </div>
                 <div className="formGroup">
                     <label>Cédula del Paciente:</label>
-                    <input
+                    <input className="input-paciente" id="cedula"
                         type="text"
                         value={pacienteId}
                         onChange={(e) => setPacienteId(e.target.value)}
