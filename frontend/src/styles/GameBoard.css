@@ -11,8 +11,9 @@
     gap: 0.5rem;
     padding: 0.5rem;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
     background-color: var(--gray);
+    height:fit-content;
 }
 .gameOption{
     text-align: center;
@@ -122,4 +123,27 @@
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.modalContent{
+    text-align: center;
+    width: 500px;
+}
+
+#modalContainer{
+    /* position: absolute; */
+    top: 350px;
+    right: 900px;
+    bottom: 0px;
+    left: 0;
+}
+
+#divierteteParrafo{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.buttonSalir {
+    background-color: var(--redPurple);
 }

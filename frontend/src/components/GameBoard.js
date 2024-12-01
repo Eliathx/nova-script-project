@@ -45,8 +45,8 @@ const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
                         className={`gameOption ${incorrectOptions.includes(item) ? "incorrect" : ""}`}
                         key={index}
                         style={{
-                            backgroundColor: incorrectOptions.includes(item) ? "#c24c4c" : "white",
-                            color: incorrectOptions.includes(item) ? "white" : "inherit",
+                            backgroundColor: incorrectOptions.includes(item) ? "var(--lightRed)" : "white",
+                            color: incorrectOptions.includes(item) ? "var(--white)" : "inherit",
                         }}
                     >
                         {item}
@@ -236,11 +236,14 @@ const GameBoard = ({ quantity }) => {
                  {isModalOpen && (
                 <dialog ref={modalRef}>
                     <div className="modalContent">
-                        <p>Instrucción: Arrastra cada rectángulo con un número dentro de las casillas que corresponda. ¡Diviértete!</p>
+                        <p><strong>Instrucción:</strong> Arrastra cada rectángulo con un 
+                        número dentro de las casillas que corresponda. Puedes mover los números
+                        de las casillas las veces que necesites. </p>
+                        <p id="divierteteParrafo">¡Diviértete!</p>
                         <button onClick={startGame}>Iniciar Juego</button>
                     </div>
                 </dialog>
-            )}
+                )}
                 <div className="gameOptions">
                     {options.map((option, index) => (
                         <GameOption
@@ -284,7 +287,7 @@ const GameBoard = ({ quantity }) => {
                     className="finishButton"
                     onClick={togglePause}
                     disabled={gameFinished} 
-                    >Pausar Juego</button>
+                    >Pausar</button>
                     <button
                         className="finishButton"
                         onClick={handleFinish}
@@ -298,11 +301,11 @@ const GameBoard = ({ quantity }) => {
                 
                 
                 {/* Modal for pause */}
-                <dialog ref={pauseDialogRef}>
+                <dialog id="modalContainer" ref={pauseDialogRef}>
                     <div className="modalContent">
-                        <p>El juego está pausado</p>
+                        <p>En <strong>PAUSA</strong>. Dale clic a Reanudar para seguir jugando</p>
                         <button onClick={handleResume}>Reanudar</button> {/* Resume button */}
-                        <button onClick={() => pauseDialogRef.current.close()}>Cerrar</button> {/* Close button */}
+                        {/* <button onClick={() => pauseDialogRef.current.close()}>Cerrar</button> */}
                     </div>
                 </dialog>
                 
@@ -322,7 +325,7 @@ const GameBoard = ({ quantity }) => {
                     </div>
                 </dialog> : <dialog ref={dialogRef}>
                     <div className="imageContainer">
-                        <img className="imageCarita" src="/caritamolesta.webp" />
+                        <img className="imageCarita" src="/caritanerviosa.webp" />
                     </div>
                     <div className="dialogTitle">
                         <p>¡Sigue Practicando!</p>

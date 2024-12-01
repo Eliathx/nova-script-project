@@ -1,39 +1,41 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import "../styles/ChallengeForm.css"; // Puedes agregar estilos personalizados aquí.
+import "../styles/CantidadNumerosJuego.css";
 
 const CantidadNumerosJuego = () => {
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(''); // Estado para manejar la cantidad ingresada
-
-    const handleInputChange = (event) => {
-        setQuantity(event.target.value); // Actualiza el estado con el valor del input
-    };
 
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
         if (quantity && !isNaN(quantity) && quantity > 0) { // Verificar que sea un número positivo
             navigate('/jugar', { state: { quantity: parseInt(quantity, 10) } });
         } else {
-            alert('Por favor, ingresa un número válido mayor a 0');
+            alert('Por favor, ingresa un número');
         }
     };
 
     return (
-        <div className="challengeContainer">
-            <h1>Selecciona la cantidad de números para el desafío</h1>
-            <p>Ingresa la cantidad de números que deseas jugar:</p>
-            <form onSubmit={handleSubmit}>
+        <div className="mainContainer">
+            {/* <h1>Selecciona la cantidad <br></br> de números para el desafío</h1> */}
+            <p><strong>PARA CONTINUAR:</strong></p>
+            <p>Por favor, ingresa la cantidad de números para el desafío:</p>
+            {/* texto en negrita */}
+            {/* <p><strong>Nota:</strong> El número máximo de números a jugar es 27.</p> */}
+
+            <form style={{display:"flex", gap: "1rem", justifyContent: "center"}} onSubmit={handleSubmit}>
                 <input
                     type="number"
+                    id='inputQuantity'
                     value={quantity}
-                    onChange={handleInputChange}
-                    placeholder="Escribe la cantidad"
+                    onChange={(e) => setQuantity(e.target.value)}
+                    // placeholder="Cantidad de números"
                     min="1"
+                    max={100}
                 />
-                <button type="submit">Comenzar</button>
+                <button id="verificarButton" type="submit">Comenzar</button>
             </form>
-            <a href="/formularioInformaciónUsuario">Regresar</a>
+            <br></br> <a className="enlaceRegresar"  href="/formularioInformaciónUsuario">Regresar</a>
         </div>
         
     );

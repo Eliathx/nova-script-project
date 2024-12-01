@@ -1,6 +1,8 @@
 :root{
   --orange: #f19f52;
   --purple: #66559b;
+  --redPurple: #9e4961;
+  --lightRed: #bf6a6a;
   --white: #fffbf0;
   --gray: #eceae0;
   --black: #222222;
@@ -27,17 +29,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.verificarCedulaButton{
-  all: unset;
-  cursor: pointer;
-  padding: 0.75rem 3.5rem;
-  border-radius: 6px;
-  color: var(--white);
-  background-color: var(--purple);
-  display: block;
-  width: fit-content;
 }
 
 a, button{
@@ -70,4 +61,16 @@ dialog{
   border: none;
   border-radius: 12px;
   overflow: visible;
+}
+
+input {
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--black);
+}
+
+.enlaceRegresar{
+  padding: 0.30rem 0.75rem;
+  font-size: 18px;
+  margin-left: 1rem;
 }

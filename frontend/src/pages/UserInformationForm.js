@@ -36,7 +36,7 @@ const UserInformationForm = () => {
             <form style={{display:"flex", gap: "1rem", justifyContent: "center"}} onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    id="cedula"
+                    id="inputCedula"
                     value={cedula}
                     onChange={(e) => setCedula(e.target.value)}
                     placeholder="Número de cédula"
@@ -48,7 +48,10 @@ const UserInformationForm = () => {
             {errorMessage && (
                 <p className="errorMessage">{errorMessage}</p>
             )}
-            <a href="/">Regresar</a>
+
+            <p>Si no tienes una cédula registrada, solicita al terapeuta que te registre.</p>
+
+            <a className="enlaceRegresar" href="/">Regresar</a>
         </div>
         
     );

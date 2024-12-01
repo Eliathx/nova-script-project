@@ -9,8 +9,28 @@
     color: var(--black);
 }
 
-input {
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid var(--black);
+.formCedula{
+    display:"flex";
+    gap: "1rem";
+    justify-content: center;
+}
+
+.verificarCedulaButton{
+  all: unset;
+  cursor: pointer;
+  padding: 0.75rem 3.5rem;
+  border-radius: 6px;
+  color: var(--white);
+  background-color: var(--purple);
+  display: block;
+  width: fit-content;
+}
+
+#inputCedula{
+    /* padding: 0.75rem 3.5rem; */
+    /* height: fit-content; */
+    /* width: 15rem; */
+    font-size: 1.25rem;
+    text-align: center;
+    /* margin: 0 1.5rem; */
 }
