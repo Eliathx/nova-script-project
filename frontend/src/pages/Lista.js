@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Lista = () => {
   const [pacientes, setPacientes] = useState([]);
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const terapeutaId = localStorage.getItem('terapeutaId');
+  const terapeutaId = localStorage.getItem("terapeutaId");
 
   useEffect(() => {
     if (terapeutaId) {
@@ -17,11 +17,11 @@ const Lista = () => {
           setPacientes(response.data);
         })
         .catch((err) => {
-          setError('Error al cargar los pacientes');
+          setError("Error al cargar los pacientes");
           console.error(err);
         });
     } else {
-      setError('No se encontró el terapeuta autenticado');
+      setError("No se encontró el terapeuta autenticado");
     }
   }, [terapeutaId]);
 
@@ -30,29 +30,43 @@ const Lista = () => {
   };
 
   const handleEliminarPaciente = (pacienteId) => {
-    // Confirm deletion
-    const confirmar = window.confirm('¿Está seguro de que desea eliminar este paciente?');
-    
+    const confirmar = window.confirm(
+      "¿Está seguro de que desea eliminar este paciente?"
+    );
     if (confirmar) {
       axios
         .delete(`http://localhost:5000/api/pacientes/${pacienteId}`)
         .then(() => {
-          // Reload patients list after deletion
-          window.location.reload();
-          alert('Paciente eliminado exitosamente');
+          setPacientes((prev) =>
+            prev.filter((paciente) => paciente.id !== pacienteId)
+          );
+          alert("Paciente eliminado exitosamente");
         })
         .catch((err) => {
-          console.error('Error al eliminar paciente:', err);
-          alert('Error al eliminar el paciente');
+          console.error("Error al eliminar paciente:", err);
+          alert("Error al eliminar el paciente");
         });
     }
   };
-  
+
+  const handleEditarPaciente = (pacienteId) => {
+    navigate(`/editar-paciente/${pacienteId}`);
+  };
+
   return (
     <div>
-      <div style={{display:"flex", width:"100%", justifyContent: 'space-between', alignItems:"center"}}>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <h2 style={{ color: "var(--white)" }}>Lista de Pacientes</h2>
-        <a style={{ margin: "0" }} href='registrarPaciente'>Registrar nuevo paciente</a>
+        <a style={{ margin: "0" }} href="registrarPaciente">
+          Registrar nuevo paciente
+        </a>
       </div>
       {error && <p className="error-message">{error}</p>}
       <table>
@@ -73,10 +87,23 @@ const Lista = () => {
               <td>{paciente.apellido}</td>
               <td>{paciente.edad}</td>
               <td>
-                <button className='verificarCedulaButton' onClick={() => handleVerPartidas(paciente.id)}>
+                <button
+                  className="verificarCedulaButton"
+                  onClick={() => handleVerPartidas(paciente.id)}
+                >
                   Ver partidas
                 </button>
-                <button className='eliminarPacienteButton' onClick={() => handleEliminarPaciente(paciente.id)}>
+                <button
+                  className="editarPacienteButton"
+                  onClick={() => navigate(`/editar-paciente/${paciente.id}`)}
+                >
+                  Editar
+                </button>
+
+                <button
+                  className="eliminarPacienteButton"
+                  onClick={() => handleEliminarPaciente(paciente.id)}
+                >
                   Eliminar
                 </button>
               </td>
