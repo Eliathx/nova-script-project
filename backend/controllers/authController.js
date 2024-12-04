@@ -10,14 +10,14 @@ exports.login = async (req, res) => {
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+      return res.status(404).json({ message: 'Este usuario no existe' });
     }
 
     const user = result.rows[0];
     const isValidPassword = password === user.clave;
 
     if (!isValidPassword) {
-      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
     }
 
     res.status(200).json({ message: 'Autenticación exitosa', terapeutaId: user.id });

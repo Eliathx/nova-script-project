@@ -16,17 +16,23 @@ function Login() {
       const response = await axios.post('http://localhost:5000/api/login', { username, password });
 
       if (response.data && response.data.terapeutaId) {
-        console.log(response.data.terapeutaId)
+        console.log(response.data.terapeutaId);
         localStorage.setItem('terapeutaId', response.data.terapeutaId);
         navigate('/lista-pacientes');
       } else {
-        setError('Usuario o contraseña incorrectos');
+        setError('Error inesperado');
       }
     } catch (err) {
-      setError('Error al iniciar sesión');
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message); 
+      } else {
+        setError('Error al iniciar sesión');
+      }
       console.error(err);
     }
-  };
+};
+
+
 
   return (
     <div className="login-container">

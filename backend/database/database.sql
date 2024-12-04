@@ -12,6 +12,7 @@ CREATE TABLE Pacientes (
     apellido VARCHAR(50) NOT NULL,
     edad INT CHECK (edad > 0),
     terapeutaId VARCHAR(10), 
+    visible BOOLEAN DEFAULT TRUE,
     CONSTRAINT fk_terapeuta
         FOREIGN KEY (terapeutaId)
         REFERENCES Psicoterapeutas(id)

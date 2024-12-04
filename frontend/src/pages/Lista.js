@@ -86,7 +86,7 @@ const Lista = () => {
               <td>{paciente.nombre}</td>
               <td>{paciente.apellido}</td>
               <td>{paciente.edad}</td>
-              <td>
+              <td style={{display: "flex", gap: "0.5rem"}}>
                 <button
                   className="verificarCedulaButton"
                   onClick={() => handleVerPartidas(paciente.id)}

@@ -1,12 +1,11 @@
 const pool = require("../database/db");
 
-// Obtener pacientes por terapeuta
 exports.getPacientesPorTerapeuta = async (req, res) => {
   const { terapeutaId } = req.params;
 
   try {
     const result = await pool.query(
-      "SELECT * FROM Pacientes WHERE terapeutaId = $1",
+      "SELECT * FROM Pacientes WHERE terapeutaId = $1 AND visible = TRUE",
       [terapeutaId]
     );
 
@@ -23,7 +22,6 @@ exports.getPacientesPorTerapeuta = async (req, res) => {
   }
 };
 
-// Obtener paciente por ID
 exports.getPacientePorId = async (req, res) => {
   const { pacienteId } = req.params;
 
@@ -47,7 +45,6 @@ exports.getPacientePorId = async (req, res) => {
   }
 };
 
-// Insertar paciente
 exports.insertarPaciente = async (req, res) => {
   const { nombre, apellido, edad, terapeutaId, pacienteId } = req.body;
 
@@ -75,12 +72,10 @@ exports.insertarPaciente = async (req, res) => {
   }
 };
 
-// Editar paciente
 exports.editarPaciente = async (req, res) => {
-  const { pacienteId } = req.params; // ID del paciente a editar
-  const { nombre, apellido, edad, terapeutaId } = req.body; // Nuevos datos del paciente
+  const { pacienteId } = req.params;
+  const { nombre, apellido, edad, terapeutaId } = req.body;
 
-  // Validar que los campos necesarios estén presentes
   if (!nombre || !apellido || !edad || !terapeutaId) {
     return res
       .status(400)
@@ -117,7 +112,7 @@ exports.eliminarPaciente = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "DELETE FROM Pacientes WHERE id = $1::VARCHAR RETURNING *;",
+      "UPDATE Pacientes SET visible = FALSE WHERE id = $1::VARCHAR RETURNING *;",
       [pacienteId]
     );
 
@@ -126,13 +121,14 @@ exports.eliminarPaciente = async (req, res) => {
     }
 
     res.status(200).json({
-      message: "Paciente eliminado exitosamente",
+      message: "Paciente marcado como no visible exitosamente",
       paciente: result.rows[0],
     });
   } catch (error) {
-    console.error("Error al eliminar el paciente:", error);
+    console.error("Error al marcar al paciente como no visible:", error);
     res
       .status(500)
       .json({ message: "Error en el servidor", error: error.message });
   }
 };
+
