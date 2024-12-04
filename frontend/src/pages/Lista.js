@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "../styles/Lista.css"
+import formatDate from "../utils/formatDate";
+
 const Lista = () => {
   const [pacientes, setPacientes] = useState([]);
   const [error, setError] = useState("");
@@ -75,7 +78,7 @@ const Lista = () => {
             <th>Cédula</th>
             <th>Nombres</th>
             <th>Apellidos</th>
-            <th>Edad</th>
+            <th>Fecha de nacimiento</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -85,23 +88,15 @@ const Lista = () => {
               <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
               <td>{paciente.apellido}</td>
-              <td>{paciente.edad}</td>
-              <td style={{display: "flex", gap: "0.5rem"}}>
+              <td>{formatDate(paciente.fecha_nacimiento)}</td>
+              <td className="acciones-column">
                 <button
-                  className="verificarCedulaButton"
                   onClick={() => handleVerPartidas(paciente.id)}
                 >
                   Ver partidas
                 </button>
                 <button
-                  className="editarPacienteButton"
-                  onClick={() => navigate(`/editar-paciente/${paciente.id}`)}
-                >
-                  Editar
-                </button>
-
-                <button
-                  className="eliminarPacienteButton"
+                className="buttonSalir"
                   onClick={() => handleEliminarPaciente(paciente.id)}
                 >
                   Eliminar

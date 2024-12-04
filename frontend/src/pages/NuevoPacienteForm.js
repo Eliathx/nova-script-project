@@ -99,9 +99,11 @@ const NuevoPacienteForm = () => {
                 </div>
                 {error && <div className="error">{error}</div>}
                 {success && <div className="success">Paciente registrado correctamente.</div>}
+           <div style={{display: "flex", gap: "1rem", alignItems: "center"}}>
+                <a href="/lista-pacientes">Regresar</a>
                 <button type="submit">Registrar Paciente</button>
+           </div>
             </form>
-            <a href="/lista-pacientes">Regresar</a>
         </div>
     );
 };

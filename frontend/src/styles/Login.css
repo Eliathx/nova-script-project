@@ -1,11 +1,18 @@
 .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: auto;
     background-color: var(--gray);
     width: fit-content;
     padding: 2rem;
     border-radius: 12px;
 }
-
+.login-container form{
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+}
 .login-container h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -13,27 +20,24 @@
 }
 
 .form-group {
+    width: fit-content;
     margin-bottom: 1rem;
-    width: 100%;
 }
 
 .form-group label {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     display: block;
 }
 
 .form-group input {
+    box-sizing: border-box;
     padding: 0.5rem;
-    font-size: 1rem;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
 .login-button {
     width: fit-content;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
     color: var(--white);
     background-color: var(--purple);
     border: none;

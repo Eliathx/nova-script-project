@@ -57,8 +57,10 @@ function Login() {
           />
         </div>
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="login-button">Ingresar</button>
-        <a  className="login-button" href="/">Regresar</a>
+        <div style={{display: "flex", gap: "0.5rem"}}>
+          <a  className="enlaceRegresar" href="/">Regresar</a>
+          <button type="submit" className="login-button">Ingresar</button>
+        </div>
       </form>
     </div>
     

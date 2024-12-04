@@ -46,9 +46,9 @@ exports.getPacientePorId = async (req, res) => {
 };
 
 exports.insertarPaciente = async (req, res) => {
-  const { nombre, apellido, edad, terapeutaId, pacienteId } = req.body;
+  const { nombre, apellido, nacimiento, terapeutaId, pacienteId } = req.body;
 
-  if (!nombre || !apellido || !edad || !terapeutaId || !pacienteId) {
+  if (!nombre || !apellido || !nacimiento || !terapeutaId || !pacienteId) {
     return res
       .status(400)
       .json({ message: "Por favor, complete todos los campos requeridos." });
@@ -56,8 +56,8 @@ exports.insertarPaciente = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "INSERT INTO Pacientes (nombre, apellido, edad, terapeutaId, id) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [nombre, apellido, edad, terapeutaId, pacienteId]
+      "INSERT INTO Pacientes (nombre, apellido, nacimiento, terapeutaId, id) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [nombre, apellido, nacimiento, terapeutaId, pacienteId]
     );
 
     res.status(201).json({
@@ -74,9 +74,9 @@ exports.insertarPaciente = async (req, res) => {
 
 exports.editarPaciente = async (req, res) => {
   const { pacienteId } = req.params;
-  const { nombre, apellido, edad, terapeutaId } = req.body;
+  const { nombre, apellido, nacimiento, terapeutaId } = req.body;
 
-  if (!nombre || !apellido || !edad || !terapeutaId) {
+  if (!nombre || !apellido || !nacimiento || !terapeutaId) {
     return res
       .status(400)
       .json({ message: "Por favor, complete todos los campos requeridos." });
@@ -85,10 +85,10 @@ exports.editarPaciente = async (req, res) => {
   try {
     const result = await pool.query(
       `UPDATE Pacientes 
-       SET nombre = $1, apellido = $2, edad = $3, terapeutaId = $4
+       SET nombre = $1, apellido = $2, nacimiento = $3, terapeutaId = $4
        WHERE id = $5 
        RETURNING *;`,
-      [nombre, apellido, edad, terapeutaId, pacienteId]
+      [nombre, apellido, nacimiento, terapeutaId, pacienteId]
     );
 
     if (result.rows.length === 0) {

@@ -32,9 +32,10 @@ code {
 }
 
 a, button{
+  transition: 0.2s ease-in !important;
   all: unset;
   cursor: pointer;
-  padding: 0.75rem 3.5rem;
+  padding: 0.75rem 2.5rem;
   border-radius: 6px;
   color: var(--white);
   background-color: var(--purple);
@@ -53,7 +54,7 @@ td > * {
 }
 
 a:hover, button:hover {
-  background-color: #9075a1;
+  background-color: #a083b3 !important;
 }
 
 dialog{
@@ -63,15 +64,11 @@ dialog{
   border-radius: 12px;
   overflow: visible;
 }
-
+.buttonSalir:hover{
+ background-color: rgb(235, 101, 101) !important;
+}
 input {
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid var(--black);
-}
-
-.enlaceRegresar{
-  padding: 0.30rem 0.75rem;
-  font-size: 18px;
-  margin-left: 1rem;
 }
