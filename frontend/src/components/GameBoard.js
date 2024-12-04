@@ -186,6 +186,7 @@ const GameBoard = ({ quantity }) => {
                         pacienteId: pacienteId,
                         aciertos: newScore,
                         tiempoEnSegundos: timeElapsed, 
+                        cantidad: quantity
                     }),
                 });
 
@@ -225,26 +226,24 @@ const GameBoard = ({ quantity }) => {
         };
     }, [gameStarted,isPaused]);
 
-   // Toggle pause state and show modal
+  
    const togglePause = () => {
-    setIsPaused(true); // Toggle paused state
+    setIsPaused(true);
     };
 
-    // Handle resume when user clicks 'Reanudar'
     const handleResume = () => {
-        setIsPaused(false); // Resume the game
+        setIsPaused(false); 
     };
     const startGame = () => {
         setGameStarted(true);
         setIsModalOpen(false);
         if (modalRef.current) {
-            modalRef.current.close();  // Close modal using close() method
+            modalRef.current.close();  
         }
         
     };
 
     useEffect(() => {
-        // Show pause modal when paused
         if (isPaused && pauseDialogRef.current) {
             pauseDialogRef.current.showModal();
         } else if (!isPaused && pauseDialogRef.current) {
@@ -253,7 +252,7 @@ const GameBoard = ({ quantity }) => {
     }, [isPaused]);
     useEffect(() => {
         if (isModalOpen && modalRef.current) {
-            modalRef.current.showModal();  // Open modal using showModal() method
+            modalRef.current.showModal();  
         }
     }, [isModalOpen]);
 

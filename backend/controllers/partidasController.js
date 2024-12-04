@@ -20,7 +20,7 @@ exports.getPartidasPorPaciente = async (req, res) => {
   }
 };
 exports.insertarPartida = async (req, res) => {
-  const { pacienteId, aciertos, tiempoEnSegundos } = req.body;  
+  const { pacienteId, aciertos, tiempoEnSegundos, cantidad } = req.body;  
 
   if (!pacienteId || aciertos === undefined || tiempoEnSegundos === undefined) {
     return res.status(400).json({ message: 'Faltan datos para insertar la partida' });
@@ -28,9 +28,9 @@ exports.insertarPartida = async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO Partidas (pacienteId, aciertos, tiempoEnSegundos)
-       VALUES ($1, $2, $3) RETURNING id`, 
-      [pacienteId, aciertos, tiempoEnSegundos]
+      `INSERT INTO Partidas (pacienteId, aciertos, tiempoEnSegundos, cantidad)
+       VALUES ($1, $2, $3, $4) RETURNING id`, 
+      [pacienteId, aciertos, tiempoEnSegundos, cantidad]
     );
 
     res.status(201).json({ message: 'Partida insertada correctamente', id: result.rows[0].id });

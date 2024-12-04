@@ -28,6 +28,11 @@ const UserInformationForm = () => {
         }
     };
 
+    const handleCedulaChange = (e) => {
+        setCedula(e.target.value);
+        if (errorMessage) setErrorMessage('');
+    };
+
     return (
         <div className="informationContainer">
             <h1>¡Bienvenido de vuelta!</h1>
@@ -38,7 +43,7 @@ const UserInformationForm = () => {
                     type="text"
                     id="inputCedula"
                     value={cedula}
-                    onChange={(e) => setCedula(e.target.value)}
+                    onChange={handleCedulaChange}
                     placeholder="Número de cédula"
                     required
                 />
@@ -53,7 +58,6 @@ const UserInformationForm = () => {
 
             <a className="enlaceRegresar" href="/">Regresar</a>
         </div>
-        
     );
 };
 
