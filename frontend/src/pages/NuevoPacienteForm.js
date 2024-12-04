@@ -9,6 +9,20 @@ const NuevoPacienteForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
+    const handleNombreChange = (e) => {
+        const value = e.target.value;
+        if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(value)) {
+            setNombre(value);
+        }
+    };
+
+    const handleApellidoChange = (e) => {
+        const value = e.target.value;
+        if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(value)) {
+            setApellido(value);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -66,7 +80,7 @@ const NuevoPacienteForm = () => {
                     <input className="input-paciente" id="nombre"
                         type="text"
                         value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
+                        onChange={handleNombreChange}
                         required
                     />
                 </div>
@@ -75,7 +89,7 @@ const NuevoPacienteForm = () => {
                     <input className="input-paciente" id="apellido"
                         type="text"
                         value={apellido}
-                        onChange={(e) => setApellido(e.target.value)}
+                        onChange={handleApellidoChange}
                         required
                     />
                 </div>
