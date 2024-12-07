@@ -327,7 +327,6 @@ const GameBoard = ({ quantity }) => {
                 </div>
                 
                 
-                {/* Modal for pause */}
                 <dialog id="modalContainer" ref={pauseDialogRef}>
                     <div className="modalContent">
                         <p>En <strong>PAUSA</strong>. Dale clic a Reanudar para seguir jugando</p>

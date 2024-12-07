@@ -130,14 +130,6 @@
     width: 500px;
 }
 
-#modalContainer{
-    /* position: absolute; */
-    top: 350px;
-    right: 900px;
-    bottom: 0px;
-    left: 0;
-}
-
 #divierteteParrafo{
     font-size: 1.5rem;
     margin-top: 1rem;
