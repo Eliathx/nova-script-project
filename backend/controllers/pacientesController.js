@@ -56,7 +56,7 @@ exports.insertarPaciente = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "INSERT INTO Pacientes (nombre, apellido, nacimiento, terapeutaId, id) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      "INSERT INTO Pacientes (nombre, apellido, fecha_nacimiento, terapeutaId, id) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [nombre, apellido, nacimiento, terapeutaId, pacienteId]
     );
 

@@ -4,7 +4,7 @@ import "../styles/NuevoPacienteForm.css";
 const NuevoPacienteForm = () => {
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
-    const [edad, setEdad] = useState("");
+    const [fechaNacimiento, setFechaNacimiento] = useState("");
     const [pacienteId, setPacienteId] = useState("");
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -41,9 +41,9 @@ const NuevoPacienteForm = () => {
         const nuevoPaciente = {
             nombre,
             apellido,
-            edad: parseInt(edad, 10),
-            pacienteId,
-            terapeutaId
+            nacimiento: fechaNacimiento,
+            terapeutaId,
+            pacienteId
         };
 
         try {
@@ -60,7 +60,7 @@ const NuevoPacienteForm = () => {
                 setError(null);
                 setNombre("");
                 setApellido("");
-                setEdad("");
+                setFechaNacimiento("");
                 setPacienteId("");
             } else {
                 setError("Error al registrar el paciente.");
@@ -94,11 +94,11 @@ const NuevoPacienteForm = () => {
                     />
                 </div>
                 <div className="formGroup">
-                    <label>Edad:</label>
-                    <input className="input-paciente" id="edad"
-                        type="number"
-                        value={edad}
-                        onChange={(e) => setEdad(e.target.value)}
+                    <label>Fecha de Nacimiento:</label>
+                    <input className="input-paciente" id="fechaNacimiento"
+                        type="date"
+                        value={fechaNacimiento}
+                        onChange={(e) => setFechaNacimiento(e.target.value)}
                         required
                     />
                 </div>
