@@ -38,3 +38,8 @@
 #inputCedula{
     text-align: center;
 }
+
+#grayText{
+    color: var(--orange);
+    font-size: 0.75rem;
+}

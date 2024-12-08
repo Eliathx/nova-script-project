@@ -54,7 +54,7 @@ const UserInformationForm = () => {
                 <p className="errorMessage">{errorMessage}</p>
             )}
 
-            <p>Si no tienes una cédula registrada, solicita al terapeuta que te registre.</p>
+            <p id="grayText">Si no tienes una cédula registrada, solicita al terapeuta que te registre.</p>
 
             <a className="enlaceRegresar" href="/">Regresar</a>
         </div>

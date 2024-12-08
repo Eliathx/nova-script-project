@@ -72,3 +72,8 @@ input {
   border-radius: 6px;
   border: 1px solid var(--black);
 }
+
+.errorMessage{
+  color: var(--redPurple);
+  font-size: 0.75rem;
+}

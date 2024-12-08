@@ -18,7 +18,7 @@ const CantidadNumerosJuego = () => {
     return (
         <div className="mainContainer">
             {/* <h1>Selecciona la cantidad <br></br> de números para el desafío</h1> */}
-            <p><strong>PARA CONTINUAR:</strong></p>
+            <h1><strong>Para continuar:</strong></h1>
             <p>Por favor, ingresa la cantidad de números para el desafío:</p>
             {/* texto en negrita */}
             {/* <p><strong>Nota:</strong> El número máximo de números a jugar es 27.</p> */}
@@ -32,6 +32,7 @@ const CantidadNumerosJuego = () => {
                     // placeholder="Cantidad de números"
                     min="1"
                     max={100}
+                    required
                 />
                 <button id="verificarButton" type="submit">Comenzar</button>
             </form>

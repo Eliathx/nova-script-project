@@ -263,10 +263,16 @@ const GameBoard = ({ quantity }) => {
                  {isModalOpen && (
                 <dialog ref={modalRef}>
                     <div className="modalContent">
-                        <p><strong>Instrucción:</strong> Arrastra cada rectángulo con un 
-                        número dentro de las casillas que corresponda. Puedes mover los números
-                        de las casillas las veces que necesites. </p>
-                        <p id="divierteteParrafo">¡Diviértete!</p>
+                    <p>
+                        <strong>Instrucción: </strong> 
+                        Arrastra los rectángulos con números de la parte superior y 
+                        colócalos en las casillas de la parte inferior según el rango correspondiente.
+                        <br/><br/>
+                        <strong>Nota:</strong> Puedes reorganizar los números entre las 
+                        casillas tantas veces como desees.
+                    </p>
+                    <p id="divierteteParrafo">¡Diviértete!</p>
+
                         <button onClick={startGame}>Iniciar Juego</button>
                     </div>
                 </dialog>
@@ -343,10 +349,10 @@ const GameBoard = ({ quantity }) => {
                         <p>¡Lo Lograste!</p>
                     </div>
                     <div className="scoreTitle">
-                        <p>Aciertos: {score}</p>
+                        <p><strong>Aciertos:</strong> {score}</p>
                     </div>
                     <div className="buttonContainer">
-                        <a href="/jugar">Volver a jugar</a>
+                        <a href="/jugar">Volver a jugar {quantity} numeros</a>
                         <button onClick={() => dialogRef.current.close()}>Cerrar</button>
                     </div>
                 </dialog> : <dialog ref={dialogRef}>
@@ -357,10 +363,10 @@ const GameBoard = ({ quantity }) => {
                         <p>¡Sigue Practicando!</p>
                     </div>
                     <div className="scoreTitle">
-                        <p>Aciertos: {score}</p>
+                        <p><strong>Aciertos:</strong> {score}</p>
                     </div>
                     <div className="buttonContainer">
-                        <a href="/jugar">Volver a jugar</a>
+                        <a href="/jugar">Volver a jugar {quantity} numeros</a>
                         <button onClick={() => dialogRef.current.close()}>Cerrar</button>
                     </div>
                 </dialog>}

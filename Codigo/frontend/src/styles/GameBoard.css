@@ -100,8 +100,8 @@
 
 .imageContainer{
     width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
+    max-width: 225px;
+    /* margin: 0 auto; */
     display: block;
     margin: -4rem auto;
     position: relative;
