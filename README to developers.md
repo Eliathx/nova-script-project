@@ -88,17 +88,15 @@ Para una ejecución en un entorno local, se recomienda usar [Visual Studio Code]
 
 Luego de clonar el repositorio, es necesario seguir un proceso para crear la base de datos local, instalar las dependencias y ejecutar la app. 
 
-Para crear la BD debes usar PostgreSQL con los siguientes datos
+Para crear la BD debes usar PostgreSQL y modificar los siguientes datos para que coincidan:
 
 ``` JS
-  user: "postgres",
+  user: [tu usuario de PostgreSQL],
   database: "nova_project_db",
-  password: "1029"
+  password: [tu contraseña de PostgreSQL]
 ```
 
-**Nota:** Puedes cambiar la contraseña en ```Codigo\backend\database\db.js```
-
-Y luego añadir las tablas de ```"Codigo\backend\database\database.sql"``` en tu BD recien creada.
+Y luego añadir las tablas de ```"Codigo\backend\database\database.sql"``` en tu BD "nova_project_db" recien creada.
 
 Después, para seguir el proceso es necesario abrir dos terminales:
 
