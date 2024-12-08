@@ -82,5 +82,65 @@ El sistema se desarrolla bajo un modelo arquitectónico de **N-capas**, organiza
 
 ---
 
+## Pasos para ejecución local
+
+Para una ejecución en un entorno local, se recomienda usar [Visual Studio Code](https://code.visualstudio.com/download).  
+
+Luego de clonar el repositorio, es necesario seguir un proceso para crear la base de datos local, instalar las dependencias y ejecutar la app. 
+
+Para crear la BD debes usar PostgreSQL con los siguientes datos
+
+``` JS
+  user: "postgres",
+  database: "nova_project_db",
+  password: "1029"
+```
+
+**Nota:** Puedes cambiar la contraseña en ```Codigo\backend\database\db.js```
+
+Y luego añadir las tablas de ```"Codigo\backend\database\database.sql"``` en tu BD recien creada.
+
+Después, para seguir el proceso es necesario abrir dos terminales:
+
+- **La primera** debe estar abierta en la ubicación "Codigo/backend", lo cual se realiza con el comando:  
+
+    ```bash
+    cd Codigo/backend
+    ```
+
+    Luego, se instalan las dependencias con
+
+    ```bash
+    npm i
+    ```
+
+    Y por último, ejecutar el servidor backen con el comando:
+
+    ```bash
+    node server.js
+    ```
+
+- **La segunda** debe estar abierta en la ubicación "Codigo/frontend", lo cual se realiza con el comando:  
+
+    ```bash
+    cd Codigo/frontend
+    ```
+
+    Luego, se instalan las dependencias con
+
+    ```bash
+    npm i
+    ```
+
+    Y por último, ejecutar la aplicación con el comando:
+
+    ```bash
+    npm start
+    ```
+
+Con estos pasos, se abre una nueva ventana en tu navegador que muestra la aplicación funcional.
+
+---
+
 Este proyecto es una herramienta técnica diseñada para contribuir al bienestar social y facilitar el trabajo de los profesionales de la salud.  
 ¡Contribuye y optimiza el código para hacerlo aún mejor! 🚀  
