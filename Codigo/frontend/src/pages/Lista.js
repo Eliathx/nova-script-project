@@ -53,7 +53,7 @@ const Lista = () => {
   };
 
   return (
-    <div>
+    <div id="mainContainer">
       <div
         style={{
           display: "flex",
@@ -62,13 +62,13 @@ const Lista = () => {
           alignItems: "center",
         }}
       >
-        <h2 style={{ color: "var(--white)" }}>Lista de Pacientes</h2>
+        <h1>Lista de Pacientes</h1>
         <a style={{ margin: "0" }} href="registrarPaciente">
           Registrar nuevo paciente
         </a>
       </div>
       {error && <p className="error-message">{error}</p>}
-      <table>
+      <table className="table-background">
         <thead>
           <tr>
             <th>Cédula</th>
@@ -80,7 +80,7 @@ const Lista = () => {
         </thead>
         <tbody>
           {pacientes.map((paciente, index) => (
-            <tr key={index}>
+            <tr key={index} >
               <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
               <td>{paciente.apellido}</td>

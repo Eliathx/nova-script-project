@@ -1,3 +1,18 @@
 .acciones-column{
     display: flex;
 }
+
+.table-background {
+    background-color: #f0f0f0;
+}
+
+#mainContainer{
+    align-items: center;
+    margin: auto;
+    background-color: var(--gray);
+    padding: 2rem;
+    border-radius: 12px;    
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gray);
+}

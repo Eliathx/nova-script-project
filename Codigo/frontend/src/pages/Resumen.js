@@ -30,7 +30,7 @@ const Resumen = ({ user }) => {
 
   return (
     <div className="table-container">
-      <h2  style={{ color: "var(--white)" }}>Partidas</h2>
+      <h2>Partidas</h2>
       <table>
         <thead>
           <tr>

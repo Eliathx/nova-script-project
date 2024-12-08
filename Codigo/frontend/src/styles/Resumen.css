@@ -2,34 +2,14 @@
     width: 80%;
     margin: 20px auto;
     text-align: center;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-  }
-  
-  th, td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
+
+    align-items: center;
     background-color: var(--gray);
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;    
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gray);
   }
 
   .error-message {
