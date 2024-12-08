@@ -31,7 +31,6 @@ const Resumen = ({ user }) => {
   return (
     <div className="table-container">
       <h2  style={{ color: "var(--white)" }}>Partidas</h2>
-      {error && <p className="error-message">{error}</p>}
       <table>
         <thead>
           <tr>
@@ -55,7 +54,9 @@ const Resumen = ({ user }) => {
             ))
           ) : (
             <tr>
-              <td colSpan="5">No hay partidas disponibles</td>
+              <td colSpan="5">
+                {error && <p className="error-message">{error}<br></br><br></br> </p>}
+                No hay partidas disponibles</td>
             </tr>
           )}
         </tbody>

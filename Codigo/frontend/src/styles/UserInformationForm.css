@@ -1,12 +1,21 @@
 .informationContainer{
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     background-color: var(--white);
     width: fit-content;
     padding: 1.5rem;
     color: var(--white);
     border-radius: 12px;
     color: var(--black);
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gray);
+
 }
 
 .formCedula{

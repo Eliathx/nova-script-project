@@ -69,11 +69,11 @@ const GameBoard = ({ quantity }) => {
     const dialogRef = useRef(null);
     const pauseDialogRef = useRef(null);
     const modalRef = useRef(null);
-    const openDialogPause = () => {
-        if (pauseDialogRef.current) {
-            pauseDialogRef.current.showModal();
-        }
-    };
+    // const openDialogPause = () => {
+    //     if (pauseDialogRef.current) {
+    //         pauseDialogRef.current.showModal();
+    //     }
+    // };
 
     const openDialog = () => {
         if (dialogRef.current) {
@@ -93,7 +93,7 @@ const GameBoard = ({ quantity }) => {
 
     const [score, setScore] = useState(0);
     const [isButtonActive, setIsButtonActive] = useState(false);
-    const [isButtonPauseActive, setIsButtonPauseActive] = useState(false);
+    // const [isButtonPauseActive, setIsButtonPauseActive] = useState(false);
     const [timeElapsed, setTimeElapsed] = useState(0); 
     const [timerInterval, setTimerInterval] = useState(null);
     const [gameFinished, setGameFinished] = useState(false);
@@ -337,7 +337,7 @@ const GameBoard = ({ quantity }) => {
                 
                 {(score === quantity ) ? <dialog ref={dialogRef}>
                     <div className="imageContainer">
-                        <img className="imageCarita" src="/caritafeli.webp" />
+                        <img className="imageCarita" src="/caritafeli.webp" alt="Cara Feliz" />
                     </div>
                     <div className="dialogTitle">
                         <p>¡Lo Lograste!</p>
@@ -351,7 +351,7 @@ const GameBoard = ({ quantity }) => {
                     </div>
                 </dialog> : <dialog ref={dialogRef}>
                     <div className="imageContainer">
-                        <img className="imageCarita" src="/caritanerviosa.webp" />
+                        <img className="imageCarita" src="/caritanerviosa.webp" alt="Cara Nerviosa" />
                     </div>
                     <div className="dialogTitle">
                         <p>¡Sigue Practicando!</p>

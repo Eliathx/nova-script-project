@@ -52,10 +52,6 @@ const Lista = () => {
     }
   };
 
-  const handleEditarPaciente = (pacienteId) => {
-    navigate(`/editar-paciente/${pacienteId}`);
-  };
-
   return (
     <div>
       <div

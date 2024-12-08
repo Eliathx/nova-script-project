@@ -13,6 +13,9 @@
     display: flex;
     justify-content: flex-end; 
     position: relative;
+    bottom: 2rem;
+    list-style-type: none;
+    margin: 0;
 }
 .header a{
     margin-right: 1rem;
@@ -28,6 +31,8 @@
     align-items: center;
     gap: 2rem;
     width: fit-content;
+    position: relative;
+    bottom: 3rem;
 }
 
 .bigLogo {
