@@ -139,3 +139,6 @@
 .buttonSalir {
     background-color: var(--redPurple);
 }
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.9); 
+}
