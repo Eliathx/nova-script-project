@@ -100,6 +100,7 @@ const NuevoPacienteForm = () => {
                         value={fechaNacimiento}
                         onChange={(e) => setFechaNacimiento(e.target.value)}
                         required
+                        min="1908-05-23"
                     />
                 </div>
                 <div className="formGroup">
@@ -108,6 +109,7 @@ const NuevoPacienteForm = () => {
                         type="text"
                         value={pacienteId}
                         onChange={(e) => setPacienteId(e.target.value)}
+                        pattern="[0-9]*"
                         required
                     />
                 </div>

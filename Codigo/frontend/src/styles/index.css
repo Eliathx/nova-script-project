@@ -76,9 +76,9 @@ th, td {
 }
 
 th {
-  background-color: #d7d7d7;
+  background-color: var(--orange);
   font-weight: bold;
-  color: #333;
+  color: var(--white);
 }
 
 tr:nth-child(even) {
