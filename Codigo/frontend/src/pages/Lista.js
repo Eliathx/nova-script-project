@@ -80,7 +80,7 @@ const Lista = () => {
         </thead>
         <tbody>
           {pacientes.map((paciente, index) => (
-            <tr key={index} >
+            <tr key={paciente.id} >
               <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
               <td>{paciente.apellido}</td>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import PropTypes from 'prop-types';
 import "../styles/GameBoard.css";
 
 const ITEM_TYPE = "OPTION";
@@ -34,7 +35,16 @@ const GameOption = ({ value, index, category, onDropOption, incorrectOptions = [
         </div>
     );
 };
-
+GameOption.propTypes = {
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]).isRequired,
+    index: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
+    onDropOption: PropTypes.func.isRequired,
+    incorrectOptions: PropTypes.arrayOf(PropTypes.number),
+};
+  GameOption.defaultProps = {
+    incorrectOptions: []
+  };
 
 
 const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
@@ -51,7 +61,7 @@ const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
             <div ref={drop} className="gameCategoriesChoices">
             {category.map((item, index) => (
                     <GameOption
-                        key={index}
+                        key={item}
                         value={item}
                         index={index}
                         category={category}
@@ -64,16 +74,17 @@ const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
         </div>
     );
 };
+GameCategory.propTypes = {
+    title: PropTypes.string.isRequired,        
+    category: PropTypes.arrayOf(PropTypes.string).isRequired,    
+    onDropOption: PropTypes.func.isRequired, 
+    incorrectOptions: PropTypes.arrayOf(PropTypes.number)      
+};
 
 const GameBoard = ({ quantity }) => {
     const dialogRef = useRef(null);
     const pauseDialogRef = useRef(null);
     const modalRef = useRef(null);
-    // const openDialogPause = () => {
-    //     if (pauseDialogRef.current) {
-    //         pauseDialogRef.current.showModal();
-    //     }
-    // };
 
     const openDialog = () => {
         if (dialogRef.current) {
@@ -93,7 +104,6 @@ const GameBoard = ({ quantity }) => {
 
     const [score, setScore] = useState(0);
     const [isButtonActive, setIsButtonActive] = useState(false);
-    // const [isButtonPauseActive, setIsButtonPauseActive] = useState(false);
     const [timeElapsed, setTimeElapsed] = useState(0); 
     const [timerInterval, setTimerInterval] = useState(null);
     const [gameFinished, setGameFinished] = useState(false);
@@ -114,18 +124,7 @@ const GameBoard = ({ quantity }) => {
         if (gameFinished) return;
     
        
-        setCategories((prevCategories) => {
-            const updatedCategories = { ...prevCategories };
-    
-
-            Object.keys(updatedCategories).forEach((key) => {
-                updatedCategories[key] = updatedCategories[key].filter(item => item !== value);
-            });
-    
-            updatedCategories[categoryKey] = [...updatedCategories[categoryKey], value];
-    
-            return updatedCategories;
-        });
+        setCategories((prevCategories) =>  updateCategories(prevCategories, value));
     
         
         setOptions((prevOptions) => {
@@ -137,6 +136,15 @@ const GameBoard = ({ quantity }) => {
             });
         });
     };
+    const updateCategories = (prevCategories, value) => {
+        const updatedCategories = { ...prevCategories };
+    
+        Object.keys(updatedCategories).forEach((key) => {
+            updatedCategories[key] = updatedCategories[key].filter(item => item !== value);
+        });
+    
+        return updatedCategories;
+    }
     
     
     
@@ -280,7 +288,7 @@ const GameBoard = ({ quantity }) => {
                 <div className="gameOptions">
                     {options.map((option, index) => (
                         <GameOption
-                            key={index}
+                            key={item}
                             value={option}
                             index={index}
                             onDropOption={handleDropOption}
@@ -315,7 +323,7 @@ const GameBoard = ({ quantity }) => {
                         incorrectOptions={incorrectOptions}
                     />
                 </div>
-                <div class="containerButton">
+                <div className="containerButton">
                     <button 
                     className="finishButton"
                     onClick={togglePause}
@@ -329,7 +337,7 @@ const GameBoard = ({ quantity }) => {
                         Finalizar
                     </button>
 
-                    <a class="buttonSalir" href="/">Salir</a>
+                    <a className="buttonSalir" href="/">Salir</a>
                 </div>
                 
                 
@@ -375,5 +383,9 @@ const GameBoard = ({ quantity }) => {
         </DndProvider>
     );
 };
+GameBoard.propTypes = {
+    quantity: PropTypes.number.isRequired
+};
+
 
 export default GameBoard;

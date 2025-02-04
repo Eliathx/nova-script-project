@@ -83,8 +83,9 @@ const EditarPacienteForm = () => {
       <h2>Editar Información del Paciente</h2>
       <form onSubmit={handleSubmit}>
         <div className="formGroup">
-          <label>Nombres:</label>
+          <label htmlFor="nombre">Nombres:</label>
           <input
+            id="nombre"
             className="input-paciente"
             type="text"
             value={nombre}
@@ -93,8 +94,9 @@ const EditarPacienteForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label>Apellidos:</label>
+          <label htmlFor="apellido">Apellidos:</label>
           <input
+            id="apellido"
             className="input-paciente"
             type="text"
             value={apellido}
@@ -103,8 +105,9 @@ const EditarPacienteForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label>Edad:</label>
+          <label htmlFor="edad">Edad:</label>
           <input
+            id="edad"
             className="input-paciente"
             type="number"
             value={edad}
@@ -113,8 +116,9 @@ const EditarPacienteForm = () => {
           />
         </div>
         <div className="formGroup">
-          <label>Cédula del Paciente:</label>
+          <label htmlFor="cedula">Cédula del Paciente:</label>
           <input
+            id="cedula"
             className="input-paciente"
             type="text"
             value={pacienteId}

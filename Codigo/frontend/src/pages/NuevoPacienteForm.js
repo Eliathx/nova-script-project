@@ -76,7 +76,7 @@ const NuevoPacienteForm = () => {
             <h2>Registrar Nuevo Paciente</h2>
             <form onSubmit={handleSubmit}>
                 <div className="formGroup">
-                    <label>Nombres:</label>
+                    <label htmlFor="nombre">Nombres:</label>
                     <input className="input-paciente" id="nombre"
                         type="text"
                         value={nombre}
@@ -85,7 +85,7 @@ const NuevoPacienteForm = () => {
                     />
                 </div>
                 <div className="formGroup">
-                    <label>Apellidos:</label>
+                    <label htmlFor="apellido">Apellidos:</label>
                     <input className="input-paciente" id="apellido"
                         type="text"
                         value={apellido}
@@ -94,7 +94,7 @@ const NuevoPacienteForm = () => {
                     />
                 </div>
                 <div className="formGroup">
-                    <label>Fecha de Nacimiento:</label>
+                    <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
                     <input className="input-paciente" id="fechaNacimiento"
                         type="date"
                         value={fechaNacimiento}
@@ -104,7 +104,7 @@ const NuevoPacienteForm = () => {
                     />
                 </div>
                 <div className="formGroup">
-                    <label>Cédula del Paciente:</label>
+                    <label htmlFor="cedula">Cédula del Paciente:</label>
                     <input className="input-paciente" id="cedula"
                         type="text"
                         value={pacienteId}

@@ -15,7 +15,7 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:5000/api/login', { username, password });
 
-      if (response.data && response.data.terapeutaId) {
+      if (response.data?.terapeutaId) {
         console.log(response.data.terapeutaId);
         localStorage.setItem('terapeutaId', response.data.terapeutaId);
         navigate('/lista-pacientes');
@@ -23,7 +23,7 @@ function Login() {
         setError('Error inesperado');
       }
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.message) {
+      if (err.response?.data?.message) {
         setError(err.response.data.message); 
       } else {
         setError('Error al iniciar sesión');
@@ -47,16 +47,18 @@ function Login() {
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label>Nombre de Usuario</label>
+          <label htmlFor="usuario">Nombre de Usuario</label>
           <input
+            id= "usuario"
             type="text"
             value={username}
             onChange={handleUsernameChange}  
           />
         </div>
         <div className="form-group">
-          <label>Contraseña</label>
+          <label htmlFor="contrasenia">Contraseña</label>
           <input
+            id="contrasenia"
             type="password"
             value={password}
             onChange={handlePasswordChange}

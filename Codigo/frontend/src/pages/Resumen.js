@@ -61,9 +61,16 @@ const Resumen = ({ user }) => {
           )}
         </tbody>
       </table>
-      <a class="buttonSalir" href="/lista-pacientes">Volver</a>
+      <a className="buttonSalir" href="/lista-pacientes">Volver</a>
     </div>
   );
+};
+Resumen.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nombre: PropTypes.string.isRequired,
+    email: PropTypes.string,
+  }),
 };
 
 export default Resumen;
