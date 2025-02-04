@@ -124,7 +124,7 @@ const GameBoard = ({ quantity }) => {
         if (gameFinished) return;
     
        
-        setCategories((prevCategories) =>  updateCategories(prevCategories, value));
+        setCategories((prevCategories) =>  updateCategories(prevCategories, value,categoryKey));
     
         
         setOptions((prevOptions) => {
@@ -136,12 +136,13 @@ const GameBoard = ({ quantity }) => {
             });
         });
     };
-    const updateCategories = (prevCategories, value) => {
+    const updateCategories = (prevCategories, value,categoryKey) => {
         const updatedCategories = { ...prevCategories };
     
         Object.keys(updatedCategories).forEach((key) => {
             updatedCategories[key] = updatedCategories[key].filter(item => item !== value);
         });
+        updatedCategories[categoryKey] = [...updatedCategories[categoryKey], value];
     
         return updatedCategories;
     }
@@ -286,11 +287,11 @@ const GameBoard = ({ quantity }) => {
                 </dialog>
                 )}
                 <div className="gameOptions">
-                    {options.map((option, item) => (
+                    {options.map((option,index) => (
                         <GameOption
-                            key={item}
+                            key={option}
                             value={option}
-                            index={item}
+                            index={index}
                             onDropOption={handleDropOption}
                             isIncorrect={incorrectOptions.includes(option)}
                         />

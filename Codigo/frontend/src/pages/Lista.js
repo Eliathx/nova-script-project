@@ -32,26 +32,29 @@ const Lista = () => {
     navigate(`/resumen/${pacienteId}`);
   };
 
-  const handleEliminarPaciente = (pacienteId) => {
-    const confirmar = window.confirm(
-      "¿Está seguro de que desea eliminar este paciente?"
-    );
-    if (confirmar) {
-      axios
-        .delete(`http://localhost:5000/api/pacientes/${pacienteId}`)
-        .then(() => {
-          setPacientes((prev) =>
-            prev.filter((paciente) => paciente.id !== pacienteId)
-          );
-          alert("Paciente eliminado exitosamente");
-        })
-        .catch((err) => {
-          console.error("Error al eliminar paciente:", err);
-          alert("Error al eliminar el paciente");
-        });
+  const handleEliminarPaciente = async (pacienteId) => {
+    if (!confirmarEliminacion()) return;
+  
+    const eliminado = await eliminarPacienteAPI(pacienteId);
+    if (eliminado) {
+      setPacientes((prev) => prev.filter((paciente) => paciente.id !== pacienteId));
+      alert("Paciente eliminado exitosamente");
     }
   };
+  const confirmarEliminacion = () => {
+    return window.confirm("¿Está seguro de que desea eliminar este paciente?");
+  };
 
+  const eliminarPacienteAPI = async (pacienteId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/pacientes/${pacienteId}`);
+      return true;
+    } catch (err) {
+      console.error("Error al eliminar paciente:", err);
+      alert("Error al eliminar el paciente");
+      return false;
+    }
+  };
   return (
     <div id="mainContainer">
       <div
