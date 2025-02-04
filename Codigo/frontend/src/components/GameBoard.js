@@ -286,11 +286,11 @@ const GameBoard = ({ quantity }) => {
                 </dialog>
                 )}
                 <div className="gameOptions">
-                    {options.map((option, index) => (
+                    {options.map((option, item) => (
                         <GameOption
-                            key={index}
+                            key={item}
                             value={option}
-                            index={index}
+                            index={item}
                             onDropOption={handleDropOption}
                             isIncorrect={incorrectOptions.includes(option)}
                         />
