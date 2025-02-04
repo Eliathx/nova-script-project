@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Resumen.css'; 
 
+import PropTypes from 'prop-types';
+
 import formatTimeFromSeconds from '../utils/formatTimeFromSeconds';
 import formatTime from '../utils/formatTime';
 import formatDate from '../utils/formatDate';

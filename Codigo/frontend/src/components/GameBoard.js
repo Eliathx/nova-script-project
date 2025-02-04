@@ -288,7 +288,7 @@ const GameBoard = ({ quantity }) => {
                 <div className="gameOptions">
                     {options.map((option, index) => (
                         <GameOption
-                            key={item}
+                            key={index}
                             value={option}
                             index={index}
                             onDropOption={handleDropOption}
