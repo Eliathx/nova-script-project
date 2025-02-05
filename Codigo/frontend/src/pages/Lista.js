@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/Lista.css"
+import "../styles/Lista.css";
 import formatDate from "../utils/formatDate";
 
 const Lista = () => {
@@ -20,7 +20,7 @@ const Lista = () => {
           setPacientes(response.data);
         })
         .catch((err) => {
-          setError("Error al cargar los pacientes");
+          setError("No se encontraron registros");
           console.error(err);
         });
     } else {
@@ -34,10 +34,12 @@ const Lista = () => {
 
   const handleEliminarPaciente = async (pacienteId) => {
     if (!confirmarEliminacion()) return;
-  
+
     const eliminado = await eliminarPacienteAPI(pacienteId);
     if (eliminado) {
-      setPacientes((prev) => prev.filter((paciente) => paciente.id !== pacienteId));
+      setPacientes((prev) =>
+        prev.filter((paciente) => paciente.id !== pacienteId)
+      );
       alert("Paciente eliminado exitosamente");
     }
   };
@@ -83,19 +85,17 @@ const Lista = () => {
         </thead>
         <tbody>
           {pacientes.map((paciente, index) => (
-            <tr key={paciente.id} >
+            <tr key={paciente.id}>
               <td>{paciente.id}</td>
               <td>{paciente.nombre}</td>
               <td>{paciente.apellido}</td>
               <td>{formatDate(paciente.fecha_nacimiento)}</td>
               <td className="acciones-column">
-                <button
-                  onClick={() => handleVerPartidas(paciente.id)}
-                >
+                <button onClick={() => handleVerPartidas(paciente.id)}>
                   Ver partidas
                 </button>
                 <button
-                className="buttonSalir"
+                  className="buttonSalir"
                   onClick={() => handleEliminarPaciente(paciente.id)}
                 >
                   Eliminar
