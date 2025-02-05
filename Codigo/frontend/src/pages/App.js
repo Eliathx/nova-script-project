@@ -1,5 +1,7 @@
+import React from 'react';
 import '../styles/App.css';
 import { Link } from 'react-router-dom';
+import BackgroundMusic from '../components/BackgroundMusic';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           </div>
         </div>
       </div>
+      <BackgroundMusic />
     </div>
   );
 }

@@ -12,8 +12,4 @@
     border: 1px solid var(--gray);
   }
 
-  .error-message {
-    color: var(--lightRed);
-    font-size: 0.75rem;
-  }
   

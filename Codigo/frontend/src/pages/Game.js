@@ -1,6 +1,7 @@
 import { useLocation  } from 'react-router-dom';
 import "../styles/Game.css"
 import GameBoard from "../components/GameBoard";
+import BackgroundMusic from '../components/BackgroundMusic';
 
 const Game = () => {
     const location = useLocation();
@@ -15,6 +16,7 @@ const Game = () => {
         
        </div>
        {<GameBoard quantity={quantity} />}
+       <BackgroundMusic musicStatus={true} />
     </div>
 }
 

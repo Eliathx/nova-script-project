@@ -78,7 +78,7 @@ th, td {
 th {
   background-color: var(--orange);
   font-weight: bold;
-  color: var(--white);
+  color: var(--black);
 }
 
 tr:nth-child(even) {
@@ -101,7 +101,8 @@ input {
   border: 1px solid var(--black);
 }
 
-.errorMessage{
+.errorMessage, .error-message{
   color: var(--redPurple);
-  font-size: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
 }
