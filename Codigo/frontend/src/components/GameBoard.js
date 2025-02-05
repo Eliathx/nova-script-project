@@ -57,7 +57,7 @@ const GameCategory = ({ title, category, onDropOption, incorrectOptions }) => {
 
     return (
         <div className="gameCategory">
-            <div className="gameCategoriesTitle">{title}</div>
+            <div style={{fontWeight:600}} className="gameCategoriesTitle">{title}</div>
             <div ref={drop} className="gameCategoriesChoices">
             {category.map((item, index) => (
                     <GameOption
@@ -107,6 +107,7 @@ const GameBoard = ({ quantity }) => {
     const [timeElapsed, setTimeElapsed] = useState(0); 
     const [timerInterval, setTimerInterval] = useState(null);
     const [gameFinished, setGameFinished] = useState(false);
+    const [finishTime, setFinishTime] = useState(0);
 
     const [isPaused, setIsPaused] = useState(false); // New state for pause
     const [isModalOpen, setIsModalOpen] = useState(true); // Modal state
@@ -154,6 +155,7 @@ const GameBoard = ({ quantity }) => {
         if (gameFinished) return; 
         let newScore = 0;
         let incorrect = [];
+        
 
         categories.menores2999.forEach((num) => {
             if (num < 2999) {
@@ -202,6 +204,7 @@ const GameBoard = ({ quantity }) => {
                 if (response.ok) {
                     openDialog();
                     setGameFinished(true);
+                    setFinishTime(timeElapsed);
                 } else {
                     alert("Error al guardar los datos de la partida");
                 }
@@ -280,6 +283,7 @@ const GameBoard = ({ quantity }) => {
                         <strong>Nota:</strong> Puedes reorganizar los números entre las 
                         casillas tantas veces como desees.
                     </p>
+                    <img style={{width:'500px', borderRadius:'12px'}} src="instructions.gif" alt="Instrucciones" />
                     <p id="divierteteParrafo">¡Diviértete!</p>
 
                         <button onClick={startGame}>Iniciar Juego</button>
@@ -341,6 +345,17 @@ const GameBoard = ({ quantity }) => {
                     <a className="buttonSalir" href="/">Salir</a>
                 </div>
                 
+                {gameFinished?
+                <div>
+                <p style={{textAlign:'center'}}>
+                    <strong>Tiempo tomado:</strong> {Math.floor(finishTime/60)} minutos y {(finishTime % 60).toFixed(0)} segundos
+                    <br></br>
+                    <strong>Nota:</strong> Los cuadradados incorrectos son marcados en <strong><span style={{color:'var(--redPurple)'}}>rojo</span></strong>, los correctos se mantienen en blanco.
+                </p>
+
+                </div>
+                :<p></p>}
+                
                 
                 <dialog id="modalContainer" ref={pauseDialogRef}>
                     <div className="modalContent">
@@ -362,7 +377,7 @@ const GameBoard = ({ quantity }) => {
                     </div>
                     <div className="buttonContainer">
                         <a href="/jugar">Volver a jugar {quantity} numeros</a>
-                        <button onClick={() => dialogRef.current.close()}>Cerrar</button>
+                        <button onClick={() => dialogRef.current.close()}>Ver detalle</button>
                     </div>
                 </dialog> : <dialog ref={dialogRef}>
                     <div className="imageContainer">
@@ -376,7 +391,7 @@ const GameBoard = ({ quantity }) => {
                     </div>
                     <div className="buttonContainer">
                         <a href="/jugar">Volver a jugar {quantity} numeros</a>
-                        <button onClick={() => dialogRef.current.close()}>Cerrar</button>
+                        <button onClick={() => dialogRef.current.close()}>Ver detalle</button>
                     </div>
                 </dialog>}
 
