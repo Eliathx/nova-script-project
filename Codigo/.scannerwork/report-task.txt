@@ -2,5 +2,5 @@ projectKey=Proyecto_NovaScript
 serverUrl=http://localhost:9000
 serverVersion=24.12.0.100206
 dashboardUrl=http://localhost:9000/dashboard?id=Proyecto_NovaScript
-ceTaskId=74532ba0-23d2-45b2-bc39-2dfa49778204
-ceTaskUrl=http://localhost:9000/api/ce/task?id=74532ba0-23d2-45b2-bc39-2dfa49778204
+ceTaskId=d7df772e-d430-43ec-8c6e-6b546a0b771a
+ceTaskUrl=http://localhost:9000/api/ce/task?id=d7df772e-d430-43ec-8c6e-6b546a0b771a

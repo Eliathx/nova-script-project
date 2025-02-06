@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const BackgroundMusic = ({musicStatus}) => {
   const [isPlaying, setIsPlaying] = useState(musicStatus);
@@ -47,11 +48,15 @@ const BackgroundMusic = ({musicStatus}) => {
         }}
       />
       <audio id="background-music" loop>
-        <source src="music.mp3" type="audio/mpeg"></source>
+        <source src="music.mp3" type="audio/mpeg"/>
+        <track kind="captions" src="" />
         Tu navegador no soporta la etiqueta de audio.
       </audio>
     </div>
   );
+};
+BackgroundMusic.propTypes = {
+  musicStatus: PropTypes.bool.isRequired, 
 };
 
 export default BackgroundMusic;
