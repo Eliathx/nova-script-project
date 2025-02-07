@@ -35,7 +35,7 @@ const CantidadNumerosJuego = () => {
           id="inputQuantity"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
-          // placeholder="Cantidad de números"
+          placeholder="12"
           min="1"
           max={100}
           required
