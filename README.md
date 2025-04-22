@@ -1,11 +1,11 @@
 # NovaScript - Proyecto de Razonamiento y memoria de trabajo
-Nosotros somos **NovaScript (NS)**, una empresa de software dedicada a crear soluciones innovadoras que promuevan el bienestar social. 
+Nosotros somos **NovaScript (NS)**, una empresa ficticia de software dedicada a crear soluciones innovadoras que promuevan el bienestar social. 
 
->**Les presentamos:**
+>**Presentamos:**
 
 ## 📌 Clasificación de Números
 
-Un juego web implementado por NovaScript en colaboración con la Fundación TASE, pensado para ayudar a personas de tercera edad con Alzheimer a estimular sus capacidades cognitivas de una manera entretenida y accesible. Además, brinda a los profesionales de la salud herramientas de seguimiento y evaluación del progreso de sus pacientes.
+Un juego web implementado por NovaScript en colaboración con la [Fundación TASE](https://www.fundaciontase.org/) y nuestra tutora de curso, pensado para ayudar a personas de tercera edad con Alzheimer a estimular sus capacidades cognitivas de una manera entretenida y accesible. Además, brinda a los profesionales de la salud herramientas de seguimiento y evaluación del progreso de sus pacientes.
 
 
 
